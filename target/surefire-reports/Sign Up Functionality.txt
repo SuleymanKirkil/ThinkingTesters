@@ -1,0 +1,150 @@
+-------------------------------------------------------------------------------
+Test set: Sign Up Functionality
+-------------------------------------------------------------------------------
+Tests run: 15, Failures: 13, Errors: 2, Skipped: 0, Time elapsed: 192.7 s <<< FAILURE! -- in Sign Up Functionality
+Sign Up Functionality.Successful sign up with valid information -- Time elapsed: 15.49 s <<< ERROR!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: waiting for com.thinkingtesters.steps.SignUpSteps$$Lambda/0x00007fff01415038@36ba3e0a (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '14.5', java.version: '23'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: /var/folders/kv/vhp5lr_x4sn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57566}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57566/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 15833a3a4ca7787efcbeee917d672b8d
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldBeRegisteredSuccessfully(SignUpSteps.java:56)
+	at ✽.I should be registered successfully(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:15)
+
+Sign Up Functionality.Cancel sign up process -- Time elapsed: 12.52 s <<< ERROR!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: waiting for element to be clickable: By.cssSelector: a[href='/'] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '14.5', java.version: '23'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: /var/folders/kv/vhp5lr_x4sn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57647}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57647/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 80f0a41f19552a1115c7807666960a39
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.thinkingtesters.pages.BasePage.waitForElementClickable(BasePage.java:35)
+	at com.thinkingtesters.pages.BasePage.click(BasePage.java:44)
+	at com.thinkingtesters.pages.SignUpPage.clickCancel(SignUpPage.java:69)
+	at com.thinkingtesters.steps.SignUpSteps.iClickTheCancelButton(SignUpSteps.java:50)
+	at ✽.I click the cancel button(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:19)
+
+Sign Up Functionality.Validation errors for required fields #1 -- Time elapsed: 12.80 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "First Name is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+
+Sign Up Functionality.Validation errors for required fields #2 -- Time elapsed: 12.87 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Last Name is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+
+Sign Up Functionality.Validation errors for required fields #3 -- Time elapsed: 12.62 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Email is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+
+Sign Up Functionality.Validation errors for required fields #4 -- Time elapsed: 12.61 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+
+Sign Up Functionality.Email validation #1 -- Time elapsed: 12.62 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+
+Sign Up Functionality.Email validation #2 -- Time elapsed: 12.49 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+
+Sign Up Functionality.Email validation #3 -- Time elapsed: 12.54 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+
+Sign Up Functionality.Email validation #4 -- Time elapsed: 12.69 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+
+Sign Up Functionality.Sign up with already registered email -- Time elapsed: 12.72 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Email address is already registered"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:58)
+
+Sign Up Functionality.Password validation #1 -- Time elapsed: 12.62 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password must be at least 8 characters"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:66)
+
+Sign Up Functionality.Password validation #2 -- Time elapsed: 12.68 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password must contain at least one letter"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:66)
+
+Sign Up Functionality.Password validation #3 -- Time elapsed: 12.68 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password must contain at least one number"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:66)
+
+Sign Up Functionality.Field length validation -- Time elapsed: 12.74 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessageContaining(SignUpSteps.java:87)
+	at ✽.I should see an error message containing "maximum length"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:80)
+

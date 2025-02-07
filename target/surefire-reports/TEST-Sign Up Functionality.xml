@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Sign Up Functionality" time="192.709" tests="15" errors="2" skipped="0" failures="13">
+  <properties>
+    <property name="java.specification.version" value="23"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/suleymankirkil/IdeaProjects/AkilliProje/target/test-classes:/Users/suleymankirkil/IdeaProjects/AkilliProje/target/classes:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-java/4.16.1/selenium-java-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-api/4.16.1/selenium-api-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.16.1/selenium-chrome-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.16.1/selenium-chromium-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-json/4.16.1/selenium-json-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.16.1/selenium-manager-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v118/4.16.1/selenium-devtools-v118-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v119/4.16.1/selenium-devtools-v119-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v120/4.16.1/selenium-devtools-v120-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v85/4.16.1/selenium-devtools-v85-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/4.16.1/selenium-edge-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/4.16.1/selenium-firefox-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-http/4.16.1/selenium-http-4.16.1.jar:/Users/suleymankirkil/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/4.16.1/selenium-ie-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.16.1/selenium-remote-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar:/Users/suleymankirkil/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/suleymankirkil/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/suleymankirkil/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/suleymankirkil/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/suleymankirkil/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/suleymankirkil/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-api/1.28.0/opentelemetry-api-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-context/1.28.0/opentelemetry-context-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.28.0/opentelemetry-exporter-logging-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.28.0/opentelemetry-sdk-metrics-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-extension-incubator/1.28.0-alpha/opentelemetry-extension-incubator-1.28.0-alpha.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.28.0/opentelemetry-sdk-logs-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.28.0/opentelemetry-sdk-common-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.28.0/opentelemetry-sdk-extension-autoconfigure-spi-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.28.0/opentelemetry-sdk-extension-autoconfigure-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-api-events/1.28.0-alpha/opentelemetry-api-events-1.28.0-alpha.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.28.0/opentelemetry-sdk-trace-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.28.0/opentelemetry-sdk-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-semconv/1.28.0-alpha/opentelemetry-semconv-1.28.0-alpha.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-os/4.16.1/selenium-os-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/4.16.1/selenium-safari-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-support/4.16.1/selenium-support-4.16.1.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-java/7.15.0/cucumber-java-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-core/7.15.0/cucumber-core-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-gherkin/7.15.0/cucumber-gherkin-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.15.0/cucumber-gherkin-messages-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/gherkin/26.2.0/gherkin-26.2.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/messages/22.0.0/messages-22.0.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/tag-expressions/6.0.0/tag-expressions-6.0.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-expressions/17.0.1/cucumber-expressions-17.0.1.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/datatable/7.15.0/datatable-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-plugin/7.15.0/cucumber-plugin-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/docstring/7.15.0/docstring-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/html-formatter/20.4.0/html-formatter-20.4.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/junit-xml-formatter/0.2.0/junit-xml-formatter-0.2.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/ci-environment/10.0.0/ci-environment-10.0.0.jar:/Users/suleymankirkil/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-junit/7.15.0/cucumber-junit-7.15.0.jar:/Users/suleymankirkil/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/suleymankirkil/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-picocontainer/7.15.0/cucumber-picocontainer-7.15.0.jar:/Users/suleymankirkil/.m2/repository/org/picocontainer/picocontainer/2.15/picocontainer-2.15.jar:/Users/suleymankirkil/.m2/repository/org/assertj/assertj-core/3.24.2/assertj-core-3.24.2.jar:/Users/suleymankirkil/.m2/repository/net/bytebuddy/byte-buddy/1.12.21/byte-buddy-1.12.21.jar:/Users/suleymankirkil/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar:/Users/suleymankirkil/.m2/repository/org/apache/logging/log4j/log4j-core/2.22.1/log4j-core-2.22.1.jar:/Users/suleymankirkil/.m2/repository/org/apache/logging/log4j/log4j-api/2.22.1/log4j-api-2.22.1.jar:/Users/suleymankirkil/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/suleymankirkil/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/suleymankirkil/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/suleymankirkil/.m2/repository/org/slf4j/slf4j-api/2.0.11/slf4j-api-2.0.11.jar:/Users/suleymankirkil/.m2/repository/org/slf4j/slf4j-simple/2.0.11/slf4j-simple-2.0.11.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Istanbul"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="23"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="TR"/>
+    <property name="sun.boot.library.path" value="/Users/suleymankirkil/Library/Java/JavaVirtualMachines/openjdk-23/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/suleymankirkil/IdeaProjects/AkilliProje/target/surefire/surefirebooter-20250207111854168_3.jar /Users/suleymankirkil/IdeaProjects/AkilliProje/target/surefire 2025-02-07T11-18-54_124-jvmRun1 surefire-20250207111854168_1tmp surefire_0-20250207111854168_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/suleymankirkil/IdeaProjects/AkilliProje/target/test-classes:/Users/suleymankirkil/IdeaProjects/AkilliProje/target/classes:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-java/4.16.1/selenium-java-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-api/4.16.1/selenium-api-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.16.1/selenium-chrome-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.16.1/selenium-chromium-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-json/4.16.1/selenium-json-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.16.1/selenium-manager-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v118/4.16.1/selenium-devtools-v118-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v119/4.16.1/selenium-devtools-v119-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v120/4.16.1/selenium-devtools-v120-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v85/4.16.1/selenium-devtools-v85-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/4.16.1/selenium-edge-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/4.16.1/selenium-firefox-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-http/4.16.1/selenium-http-4.16.1.jar:/Users/suleymankirkil/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/4.16.1/selenium-ie-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.16.1/selenium-remote-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar:/Users/suleymankirkil/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/suleymankirkil/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/suleymankirkil/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/suleymankirkil/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/suleymankirkil/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/suleymankirkil/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-api/1.28.0/opentelemetry-api-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-context/1.28.0/opentelemetry-context-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.28.0/opentelemetry-exporter-logging-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.28.0/opentelemetry-sdk-metrics-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-extension-incubator/1.28.0-alpha/opentelemetry-extension-incubator-1.28.0-alpha.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.28.0/opentelemetry-sdk-logs-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.28.0/opentelemetry-sdk-common-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.28.0/opentelemetry-sdk-extension-autoconfigure-spi-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.28.0/opentelemetry-sdk-extension-autoconfigure-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-api-events/1.28.0-alpha/opentelemetry-api-events-1.28.0-alpha.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.28.0/opentelemetry-sdk-trace-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.28.0/opentelemetry-sdk-1.28.0.jar:/Users/suleymankirkil/.m2/repository/io/opentelemetry/opentelemetry-semconv/1.28.0-alpha/opentelemetry-semconv-1.28.0-alpha.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-os/4.16.1/selenium-os-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/4.16.1/selenium-safari-driver-4.16.1.jar:/Users/suleymankirkil/.m2/repository/org/seleniumhq/selenium/selenium-support/4.16.1/selenium-support-4.16.1.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-java/7.15.0/cucumber-java-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-core/7.15.0/cucumber-core-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-gherkin/7.15.0/cucumber-gherkin-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.15.0/cucumber-gherkin-messages-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/gherkin/26.2.0/gherkin-26.2.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/messages/22.0.0/messages-22.0.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/tag-expressions/6.0.0/tag-expressions-6.0.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-expressions/17.0.1/cucumber-expressions-17.0.1.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/datatable/7.15.0/datatable-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-plugin/7.15.0/cucumber-plugin-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/docstring/7.15.0/docstring-7.15.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/html-formatter/20.4.0/html-formatter-20.4.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/junit-xml-formatter/0.2.0/junit-xml-formatter-0.2.0.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/ci-environment/10.0.0/ci-environment-10.0.0.jar:/Users/suleymankirkil/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-junit/7.15.0/cucumber-junit-7.15.0.jar:/Users/suleymankirkil/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/suleymankirkil/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/suleymankirkil/.m2/repository/io/cucumber/cucumber-picocontainer/7.15.0/cucumber-picocontainer-7.15.0.jar:/Users/suleymankirkil/.m2/repository/org/picocontainer/picocontainer/2.15/picocontainer-2.15.jar:/Users/suleymankirkil/.m2/repository/org/assertj/assertj-core/3.24.2/assertj-core-3.24.2.jar:/Users/suleymankirkil/.m2/repository/net/bytebuddy/byte-buddy/1.12.21/byte-buddy-1.12.21.jar:/Users/suleymankirkil/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar:/Users/suleymankirkil/.m2/repository/org/apache/logging/log4j/log4j-core/2.22.1/log4j-core-2.22.1.jar:/Users/suleymankirkil/.m2/repository/org/apache/logging/log4j/log4j-api/2.22.1/log4j-api-2.22.1.jar:/Users/suleymankirkil/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/suleymankirkil/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/suleymankirkil/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/suleymankirkil/.m2/repository/org/slf4j/slf4j-api/2.0.11/slf4j-api-2.0.11.jar:/Users/suleymankirkil/.m2/repository/org/slf4j/slf4j-simple/2.0.11/slf4j-simple-2.0.11.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/suleymankirkil"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-09-17"/>
+    <property name="java.home" value="/Users/suleymankirkil/Library/Java/JavaVirtualMachines/openjdk-23/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/suleymankirkil/IdeaProjects/AkilliProje"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/suleymankirkil/IdeaProjects/AkilliProje/target/surefire/surefirebooter-20250207111854168_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="23+37-2369"/>
+    <property name="user.name" value="suleymankirkil"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.5"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/suleymankirkil/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/kv/vhp5lr_x4sn7nvfcw4xlsl800000gn/T/"/>
+    <property name="java.version" value="23"/>
+    <property name="user.dir" value="/Users/suleymankirkil/IdeaProjects/AkilliProje"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/suleymankirkil/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="23+37-2369"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="67.0"/>
+  </properties>
+  <testcase name="Successful sign up with valid information" classname="Sign Up Functionality" time="15.491">
+    <error message="Expected condition failed: waiting for com.thinkingtesters.steps.SignUpSteps$$Lambda/0x00007fff01415038@36ba3e0a (tried for 10 second(s) with 500 milliseconds interval)&#10;Build info: version: &apos;4.16.1&apos;, revision: &apos;9b4c83354e&apos;&#10;System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;14.5&apos;, java.version: &apos;23&apos;&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: /var/folders/kv/vhp5lr_x4sn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57566}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57566/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 15833a3a4ca7787efcbeee917d672b8d" type="org.openqa.selenium.TimeoutException"><![CDATA[org.openqa.selenium.TimeoutException: 
+Expected condition failed: waiting for com.thinkingtesters.steps.SignUpSteps$$Lambda/0x00007fff01415038@36ba3e0a (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '14.5', java.version: '23'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: /var/folders/kv/vhp5lr_x4sn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57566}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57566/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 15833a3a4ca7787efcbeee917d672b8d
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldBeRegisteredSuccessfully(SignUpSteps.java:56)
+	at ✽.I should be registered successfully(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:15)
+]]></error>
+    <system-out><![CDATA[
+Scenario: Successful sign up with valid information   # src/test/resources/features/signup.feature:9
+  Given I am on the sign up page                      # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                      # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                         # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john.doe@example.com"    # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"             # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button               # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should be registered successfully            # com.thinkingtesters.steps.SignUpSteps.iShouldBeRegisteredSuccessfully()
+      org.openqa.selenium.TimeoutException: Expected condition failed: waiting for com.thinkingtesters.steps.SignUpSteps$$Lambda/0x00007fff01415038@36ba3e0a (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '14.5', java.version: '23'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: /var/folders/kv/vhp5lr_x4sn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57566}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57566/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 15833a3a4ca7787efcbeee917d672b8d
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldBeRegisteredSuccessfully(SignUpSteps.java:56)
+	at ✽.I should be registered successfully(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:15)
+
+  And I should be redirected to the contact list page # com.thinkingtesters.steps.SignUpSteps.iShouldBeRedirectedToTheContactListPage()
+
+    Embedding Screenshot [image/png 88991 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:18:58 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:18:58 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john.doe@example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+]]></system-err>
+  </testcase>
+  <testcase name="Cancel sign up process" classname="Sign Up Functionality" time="12.522">
+    <error message="Expected condition failed: waiting for element to be clickable: By.cssSelector: a[href=&apos;/&apos;] (tried for 10 second(s) with 500 milliseconds interval)&#10;Build info: version: &apos;4.16.1&apos;, revision: &apos;9b4c83354e&apos;&#10;System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;14.5&apos;, java.version: &apos;23&apos;&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: /var/folders/kv/vhp5lr_x4sn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57647}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57647/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 80f0a41f19552a1115c7807666960a39" type="org.openqa.selenium.TimeoutException"><![CDATA[org.openqa.selenium.TimeoutException: 
+Expected condition failed: waiting for element to be clickable: By.cssSelector: a[href='/'] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '14.5', java.version: '23'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: /var/folders/kv/vhp5lr_x4sn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57647}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57647/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 80f0a41f19552a1115c7807666960a39
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.thinkingtesters.pages.BasePage.waitForElementClickable(BasePage.java:35)
+	at com.thinkingtesters.pages.BasePage.click(BasePage.java:44)
+	at com.thinkingtesters.pages.SignUpPage.clickCancel(SignUpPage.java:69)
+	at com.thinkingtesters.steps.SignUpSteps.iClickTheCancelButton(SignUpSteps.java:50)
+	at ✽.I click the cancel button(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:19)
+]]></error>
+    <system-out><![CDATA[
+Scenario: Cancel sign up process                # src/test/resources/features/signup.feature:18
+  Given I am on the sign up page                # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I click the cancel button                # com.thinkingtesters.steps.SignUpSteps.iClickTheCancelButton()
+      org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.cssSelector: a[href='/'] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '14.5', java.version: '23'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: /var/folders/kv/vhp5lr_x4sn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57647}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57647/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 80f0a41f19552a1115c7807666960a39
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.thinkingtesters.pages.BasePage.waitForElementClickable(BasePage.java:35)
+	at com.thinkingtesters.pages.BasePage.click(BasePage.java:44)
+	at com.thinkingtesters.pages.SignUpPage.clickCancel(SignUpPage.java:69)
+	at com.thinkingtesters.steps.SignUpSteps.iClickTheCancelButton(SignUpSteps.java:50)
+	at ✽.I click the cancel button(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:19)
+
+  Then I should be redirected to the login page # com.thinkingtesters.steps.SignUpSteps.iShouldBeRedirectedToTheLoginPage()
+
+    Embedding Screenshot [image/png 83591 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:19:11 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:19:11 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking cancel button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not clickable after timeout: By.cssSelector: a[href='/']
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Failed to click element: By.cssSelector: a[href='/']
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.cssSelector: a[href='/'] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '14.5', java.version: '23'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: /var/folders/kv/vhp5lr_x4sn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57647}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:57647/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 80f0a41f19552a1115c7807666960a39
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at com.thinkingtesters.pages.BasePage.waitForElementClickable(BasePage.java:35)
+	at com.thinkingtesters.pages.BasePage.click(BasePage.java:44)
+	at com.thinkingtesters.pages.SignUpPage.clickCancel(SignUpPage.java:69)
+	at com.thinkingtesters.steps.SignUpSteps.iClickTheCancelButton(SignUpSteps.java:50)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.junit.PickleRunners$NoStepDescriptions.lambda$run$0(PickleRunners.java:151)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:137)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:137)
+	at io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:148)
+	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:144)
+	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:28)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at io.cucumber.junit.FeatureRunner.run(FeatureRunner.java:137)
+	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:196)
+	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:89)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.apache.maven.surefire.junitcore.pc.Scheduler$1.run(Scheduler.java:345)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+]]></system-err>
+  </testcase>
+  <testcase name="Validation errors for required fields #1" classname="Sign Up Functionality" time="12.796">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "First Name is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Validation errors for required fields       # src/test/resources/features/signup.feature:32
+  Given I am on the sign up page                              # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name ""                                  # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                                 # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john@example.com"                # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"                     # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                       # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "First Name is required" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "First Name is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+
+
+    Embedding Screenshot [image/png 94849 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:19:23 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:19:23 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: 
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john@example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Validation errors for required fields #2" classname="Sign Up Functionality" time="12.871">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Last Name is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Validation errors for required fields      # src/test/resources/features/signup.feature:33
+  Given I am on the sign up page                             # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                             # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name ""                                   # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john@example.com"               # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"                    # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                      # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Last Name is required" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Last Name is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+
+
+    Embedding Screenshot [image/png 95399 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:19:36 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:19:36 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: 
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john@example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Validation errors for required fields #3" classname="Sign Up Functionality" time="12.623">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Email is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Validation errors for required fields  # src/test/resources/features/signup.feature:34
+  Given I am on the sign up page                         # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                         # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                            # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email ""                           # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"                # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                  # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Email is required" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Email is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+
+
+    Embedding Screenshot [image/png 87031 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:19:49 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:19:49 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: 
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Validation errors for required fields #4" classname="Sign Up Functionality" time="12.614">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Validation errors for required fields     # src/test/resources/features/signup.feature:35
+  Given I am on the sign up page                            # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                            # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                               # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john@example.com"              # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password ""                           # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                     # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Password is required" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password is required"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:28)
+
+
+    Embedding Screenshot [image/png 97407 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:20:01 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:20:01 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john@example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: 
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Email validation #1" classname="Sign Up Functionality" time="12.618">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Email validation                          # src/test/resources/features/signup.feature:47
+  Given I am on the sign up page                            # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                            # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                               # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "invalid.email"                 # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"                   # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                     # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Invalid email format" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+
+
+    Embedding Screenshot [image/png 88381 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:20:14 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:20:14 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: invalid.email
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Email validation #2" classname="Sign Up Functionality" time="12.487">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Email validation                          # src/test/resources/features/signup.feature:48
+  Given I am on the sign up page                            # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                            # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                               # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "@example.com"                  # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"                   # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                     # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Invalid email format" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+
+
+    Embedding Screenshot [image/png 90378 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:20:27 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:20:27 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: @example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Email validation #3" classname="Sign Up Functionality" time="12.54">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Email validation                          # src/test/resources/features/signup.feature:49
+  Given I am on the sign up page                            # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                            # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                               # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john@"                         # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"                   # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                     # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Invalid email format" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+
+
+    Embedding Screenshot [image/png 88314 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:20:39 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:20:39 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john@
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Email validation #4" classname="Sign Up Functionality" time="12.69">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Email validation                          # src/test/resources/features/signup.feature:50
+  Given I am on the sign up page                            # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                            # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                               # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john@.com"                     # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"                   # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                     # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Invalid email format" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Invalid email format"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:43)
+
+
+    Embedding Screenshot [image/png 89351 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:20:52 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:20:52 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john@.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Sign up with already registered email" classname="Sign Up Functionality" time="12.724">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Email address is already registered"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:58)
+]]></failure>
+    <system-out><![CDATA[
+Scenario: Sign up with already registered email                            # src/test/resources/features/signup.feature:52
+  Given I am on the sign up page                                           # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                                           # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                                              # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "existing@example.com"                         # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"                                  # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                                    # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Email address is already registered" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Email address is already registered"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:58)
+
+
+    Embedding Screenshot [image/png 89601 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:21:04 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:21:04 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: existing@example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Password validation #1" classname="Sign Up Functionality" time="12.625">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password must be at least 8 characters"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:66)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Password validation                                         # src/test/resources/features/signup.feature:70
+  Given I am on the sign up page                                              # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                                              # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                                                 # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john.doe@example.com"                            # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "test"                                         # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                                       # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Password must be at least 8 characters" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password must be at least 8 characters"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:66)
+
+
+    Embedding Screenshot [image/png 102803 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:21:17 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:21:17 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john.doe@example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: test
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Password validation #2" classname="Sign Up Functionality" time="12.684">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password must contain at least one letter"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:66)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Password validation                                            # src/test/resources/features/signup.feature:71
+  Given I am on the sign up page                                                 # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                                                 # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                                                    # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john.doe@example.com"                               # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "12345678"                                        # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                                          # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Password must contain at least one letter" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password must contain at least one letter"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:66)
+
+
+    Embedding Screenshot [image/png 89035 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:21:30 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:21:30 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john.doe@example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: 12345678
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Password validation #3" classname="Sign Up Functionality" time="12.68">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password must contain at least one number"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:66)
+]]></failure>
+    <system-out><![CDATA[
+Scenario Outline: Password validation                                            # src/test/resources/features/signup.feature:72
+  Given I am on the sign up page                                                 # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "John"                                                 # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "Doe"                                                    # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john.doe@example.com"                               # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "abcdefgh"                                        # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                                          # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message "Password must contain at least one number" # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessage(SignUpSteps.java:76)
+	at ✽.I should see an error message "Password must contain at least one number"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:66)
+
+
+    Embedding Screenshot [image/png 89040 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:21:42 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:21:42 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: John
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: Doe
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john.doe@example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: abcdefgh
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+  <testcase name="Field length validation" classname="Sign Up Functionality" time="12.741">
+    <failure message="[Error message should be displayed] &#10;Expecting value to be true but was false expected:&lt;[tru]e&gt; but was:&lt;[fals]e&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: 
+[Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessageContaining(SignUpSteps.java:87)
+	at ✽.I should see an error message containing "maximum length"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:80)
+]]></failure>
+    <system-out><![CDATA[
+Scenario: Field length validation                                                      # src/test/resources/features/signup.feature:74
+  Given I am on the sign up page                                                       # com.thinkingtesters.steps.SignUpSteps.iAmOnTheSignUpPage()
+  When I enter first name "ThisIsAVeryLongFirstNameThatExceedsTheMaximumAllowedLength" # com.thinkingtesters.steps.SignUpSteps.iEnterFirstName(java.lang.String)
+  And I enter last name "ThisIsAVeryLongLastNameThatExceedsTheMaximumAllowedLength"    # com.thinkingtesters.steps.SignUpSteps.iEnterLastName(java.lang.String)
+  And I enter sign up email "john.doe@example.com"                                     # com.thinkingtesters.steps.SignUpSteps.iEnterEmail(java.lang.String)
+  And I enter sign up password "Test123!"                                              # com.thinkingtesters.steps.SignUpSteps.iEnterPassword(java.lang.String)
+  And I click the sign up submit button                                                # com.thinkingtesters.steps.SignUpSteps.iClickTheSubmitButton()
+  Then I should see an error message containing "maximum length"                       # com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessageContaining(java.lang.String)
+      org.junit.ComparisonFailure: [Error message should be displayed] 
+Expecting value to be true but was false expected:<[tru]e> but was:<[fals]e>
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at com.thinkingtesters.steps.SignUpSteps.iShouldSeeAnErrorMessageContaining(SignUpSteps.java:87)
+	at ✽.I should see an error message containing "maximum length"(file:///Users/suleymankirkil/IdeaProjects/AkilliProje/src/test/resources/features/signup.feature:80)
+
+
+    Embedding Screenshot [image/png 143981 bytes]
+
+]]></system-out>
+    <system-err><![CDATA[Feb 07, 2025 11:21:55 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 132
+Feb 07, 2025 11:21:55 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 132.0.6834.160. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering first name: ThisIsAVeryLongFirstNameThatExceedsTheMaximumAllowedLength
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering last name: ThisIsAVeryLongLastNameThatExceedsTheMaximumAllowedLength
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering email: john.doe@example.com
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Entering password: Test123!
+[pool-3-thread-2] INFO com.thinkingtesters.pages.SignUpPage - Clicking submit button
+[pool-3-thread-2] ERROR com.thinkingtesters.pages.SignUpPage - Element not visible after timeout: By.cssSelector: .alert.alert-danger
+]]></system-err>
+  </testcase>
+</testsuite>
