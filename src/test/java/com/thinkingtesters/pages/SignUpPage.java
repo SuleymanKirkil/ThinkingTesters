@@ -11,8 +11,8 @@ public class SignUpPage extends BasePage {
     private static final By EMAIL_FIELD = By.id("email");
     private static final By PASSWORD_FIELD = By.id("password");
     private static final By SUBMIT_BUTTON = By.id("submit");
-    private static final By CANCEL_BUTTON = By.cssSelector("a[href='/']");
-    private static final By ERROR_MESSAGE = By.cssSelector(".alert.alert-danger");
+    private static final By CANCEL_BUTTON = By.id("cancel");
+    private static final By ERROR_MESSAGE = By.id("error");
 
     @FindBy(id = "firstName")
     private WebElement firstNameInput;

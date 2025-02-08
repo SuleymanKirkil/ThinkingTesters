@@ -6,6 +6,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Assume;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,13 @@ public class Hooks {
         DriverManager.initializeDriver();
     }
 
+    @Before
+    public void skipKnownIssues(Scenario scenario) {
+        if (scenario.getSourceTagNames().contains("@KnownIssue")) {
+            logger.warn("Skipping test due to known issue: " + scenario.getName());
+            Assume.assumeTrue(false); // Testi "skipped" olarak işaretler
+        }
+    }
     @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {

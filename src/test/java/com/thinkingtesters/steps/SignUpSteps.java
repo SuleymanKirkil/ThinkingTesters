@@ -1,11 +1,13 @@
 package com.thinkingtesters.steps;
 
+import com.thinkingtesters.apirequest.UserApiRequests;
 import com.thinkingtesters.config.Configuration;
 import com.thinkingtesters.driver.DriverManager;
 import com.thinkingtesters.pages.SignUpPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.response.Response;
 import org.assertj.core.api.Assertions;
 
 public class SignUpSteps {
@@ -65,8 +67,8 @@ public class SignUpSteps {
 
     @Then("I should be redirected to the login page")
     public void iShouldBeRedirectedToTheLoginPage() {
-        DriverManager.getWait().until(driver -> 
-            driver.getCurrentUrl().equals(Configuration.getInstance().getBaseUrl() + "/"));
+        DriverManager.getWait().until(driver ->
+                driver.getCurrentUrl().equals(Configuration.getInstance().getBaseUrl() + "/login"));
     }
 
     @Then("I should see an error message {string}")
@@ -93,6 +95,7 @@ public class SignUpSteps {
 
     @Then("I sholud delete user through api request")
     public void iSholudDeleteUserThroughApiRequest() {
-
+        Response response = UserApiRequests.deleteUser();
+        response.then().statusCode(200);
     }
 }

@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         "rerun:target/cucumber-reports/rerun.txt"
     },
     monochrome = true,
-    tags = "@LoginFeature",
+    tags = "@SigUpFeatures",
     publish = true
 )
 public class TestRunner {
