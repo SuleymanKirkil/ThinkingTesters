@@ -52,9 +52,9 @@ public class LoginSteps {
 
     @Then("I should be logged in successfully")
     public void iShouldBeLoggedInSuccessfully() {
-        // Wait for the URL to contain the dashboard or contacts page
-        DriverManager.getWait().until(driver -> 
-            driver.getCurrentUrl().contains("/contactList"));
+        Assertions.assertThat(loginPage.isLoggedIn())
+            .as("User should be logged in successfully")
+            .isTrue();
     }
 
     @Then("I should see a login error message {string}")

@@ -2,6 +2,7 @@ package com.thinkingtesters.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
@@ -10,6 +11,8 @@ public class LoginPage extends BasePage {
     private static final By SUBMIT_BUTTON = By.id("submit");
     private static final By SIGN_UP_LINK = By.id("signup");
     private static final By ERROR_MESSAGE = By.cssSelector("#error");
+    private static final By LOGOUT_BUTTON = By.id("logout");
+    private static final By ADD_CONTACT_BUTTON = By.id("add-contact");
 
     public LoginPage() {
         super();
@@ -48,5 +51,19 @@ public class LoginPage extends BasePage {
         enterEmail(email);
         enterPassword(password);
         clickSubmit();
+    }
+
+    public boolean isLoggedIn() {
+        logger.info("Checking if user is logged in");
+        try {
+            wait.until(ExpectedConditions.or(
+                ExpectedConditions.visibilityOfElementLocated(LOGOUT_BUTTON),
+                ExpectedConditions.visibilityOfElementLocated(ADD_CONTACT_BUTTON)
+            ));
+            return true;
+        } catch (Exception e) {
+            logger.error("Failed to verify login status", e);
+            return false;
+        }
     }
 }

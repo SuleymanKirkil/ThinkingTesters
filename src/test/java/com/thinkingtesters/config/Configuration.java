@@ -43,7 +43,7 @@ public class Configuration {
     }
 
     public int getExplicitWaitTimeout() {
-        return Integer.parseInt(properties.getProperty("explicit.wait.timeout", "10"));
+        return Integer.parseInt(properties.getProperty("explicit.wait.timeout", "30"));
     }
 
     public String getBrowser() {
