@@ -11,7 +11,7 @@ public class LoginPage extends BasePage {
     private static final By PASSWORD_FIELD = By.id("password");
     private static final By SUBMIT_BUTTON = By.id("submit");
     private static final By SIGN_UP_LINK = By.id("signup");
-    private static final By ERROR_MESSAGE = By.cssSelector(".error-message");
+    private static final By ERROR_MESSAGE = By.id("error");
     private static final By LOGOUT_BUTTON = By.id("logout");
     private static final By ADD_CONTACT_BUTTON = By.id("add-contact");
     private static final By CONTACT_LIST = By.cssSelector(".contact-list");

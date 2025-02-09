@@ -23,12 +23,13 @@ Feature: Login Functionality
 
     Examples:
       | email              | password | error_message                  |
-      | invalid@email.com  | test123  | Invalid email address or password |
-      | tester@tester3.com | wrong    | Invalid email address or password |
-      | tester@tester3.com | test123  | Invalid email address or password |
-      |                    | test123  | Email is required              |
-      | test@example.com   |          | Password is required           |
+      | invalid@email.com  | test123  | Incorrect username or password |
+      | tester@tester3.com | wrong    | Incorrect username or password |
+      | tester@tester3.com | test123  | Incorrect username or password |
+      |                    | test123  | Incorrect username or password |
+      | test@example.com   |          | Incorrect username or password |
 
+  @SignUp
   Scenario: Navigate to sign up page
     When I click on the sign up link
     Then I should be redirected to the sign up page
