@@ -21,7 +21,7 @@ public class LoginPage extends BasePage {
     }
 
     public void enterPassword(String password) {
-        logger.info("Entering password: {}", password);
+        logger.info("Entering password: ****");
         sendKeys(PASSWORD_FIELD, password);
     }
 

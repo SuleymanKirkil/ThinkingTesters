@@ -42,6 +42,11 @@ public class DriverManager {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--start-maximized");
                 options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
+                    options.addArguments("--headless=new");
+                }
                 webDriver = new ChromeDriver(options);
                 break;
             case "firefox":

@@ -19,25 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '11', '17' ]
-        environment: [ 'staging', 'qa' ]
+        java: [ 17 ]
+        environment: [ qa, staging ]
       fail-fast: false
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - name: Set up JDK ${{ matrix.java }}
+    - name: Set up Java
       uses: actions/setup-java@v3
       with:
         java-version: ${{ matrix.java }}
         distribution: 'temurin'
-        cache: 'maven'
-
-    - name: Setup Chrome
-      uses: browser-actions/setup-chrome@latest
-
-    - name: Setup Firefox
-      uses: browser-actions/setup-firefox@latest
+        cache: maven
 
     - name: Cache Maven packages
       uses: actions/cache@v3
@@ -46,15 +40,29 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
 
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@latest
+      with:
+        chrome-version: stable
+
     - name: Run Tests
+      env:
+        DISPLAY: :99
+        TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+        TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
       run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb
+        Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
         mvn clean test \
         -Dtest.environment=${{ matrix.environment }} \
         -Dcucumber.filter.tags="not @KnownIssue" \
         -Dbrowser=chrome \
         -Dheadless=true \
         -Dsurefire.useFile=true \
-        -Dmaven.test.failure.ignore=true
+        -Dmaven.test.failure.ignore=true \
+        -Dtest.user.email=${TEST_USER_EMAIL} \
+        -Dtest.user.password=${TEST_USER_PASSWORD}
 
     - name: Verify Test Results Directory
       if: always()
@@ -78,7 +86,7 @@ jobs:
           target/allure-results/
           target/surefire-reports/
 
-    - name: Publish Test Report
+    - name: Publish Test Results
       if: always()
       uses: dorny/test-reporter@v1
       with:
