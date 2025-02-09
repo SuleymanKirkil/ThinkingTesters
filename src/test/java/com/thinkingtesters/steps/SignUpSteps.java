@@ -9,8 +9,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.assertj.core.api.Assertions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import static org.assertj.core.api.Assertions.fail;
 
 public class SignUpSteps {
+    private static final Logger logger = LoggerFactory.getLogger(SignUpSteps.class);
     private final SignUpPage signUpPage;
 
     public SignUpSteps() {
@@ -93,9 +97,14 @@ public class SignUpSteps {
             .containsIgnoringCase(errorText);
     }
 
-    @Then("I sholud delete user through api request")
-    public void iSholudDeleteUserThroughApiRequest() {
-        Response response = UserApiRequests.deleteUser();
-        response.then().statusCode(200);
+    @Then("I should delete user through api request")
+    public void iShouldDeleteUserThroughApiRequest() {
+        try {
+            Response response = UserApiRequests.deleteUser();
+            response.then().statusCode(200);
+        } catch (Exception e) {
+            logger.error("Failed to delete user: {}", e.getMessage());
+            fail("Failed to delete user: " + e.getMessage());
+        }
     }
 }

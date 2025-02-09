@@ -1,0 +1,273 @@
+/*
+
+Projeyi CI/Cd entegrasyonunu sağlamak için önerilerin var mı
+
+Size GitHub Actions kullanarak güçlü bir CI/CD pipeline önerisi sunacağım. Önce GitHub Actions workflow dosyasını oluşturalım:
+
+Created
+test-automation.yml
++87
+-0
+ 0
+Open diff
+Ayrıca, Allure raporlaması için POM.xml'e eklemeler yapalım:
+
+Edited
+pom.xml
++31
+-7
+ 137
+Open diff
+Bu CI/CD entegrasyonu şu özellikleri sağlar:
+
+Otomatik Tetikleme:
+Push: main ve develop branchlerine
+Pull Request: main ve develop branchlerine
+Günlük otomatik çalıştırma (gece yarısı)
+Manuel tetikleme imkanı
+Paralel Test Çalıştırma:
+Farklı Java versiyonları (11 ve 17)
+Farklı test ortamları (staging ve qa)
+Her kombinasyon için ayrı rapor
+Optimizasyonlar:
+Maven cache kullanımı
+Browser binary cache
+Paralel test çalıştırma
+Test Raporlama:
+Allure Reports entegrasyonu
+JUnit XML raporları
+GitHub'da test sonuçlarının görüntülenmesi
+Bildirimler:
+Slack entegrasyonu
+Test sonuçları bildirimleri
+Browser Desteği:
+Chrome (headless)
+Firefox (headless)
+Kullanım için yapmanız gerekenler:
+
+GitHub repository'nizde şu secrets'ları tanımlayın:
+CopyInsert
+SLACK_WEBHOOK_URL: Slack webhook URL'i
+Test çalıştırma komutları:
+bash
+CopyInsert
+# Tüm testleri çalıştırma
+mvn clean test
+
+# Belirli tag'leri çalıştırma
+mvn clean test -Dcucumber.filter.tags="@smoke"
+
+# Belirli ortamda çalıştırma
+mvn clean test -Dtest.environment=staging
+Raporları görüntüleme:
+bash
+CopyInsert
+# Allure raporu oluşturma
+mvn allure:report
+
+# Allure raporu sunucusu başlatma
+mvn allure:serve
+Önerilen İyileştirmeler:
+
+Test Paralelleştirme:
+Cucumber senaryolarını paralel çalıştırma
+Test sınıflarını paralel çalıştırma
+Docker Entegrasyonu:
+yaml
+CopyInsert
+- name: Build Docker Image
+  run: docker build -t test-automation .
+
+- name: Run Tests in Docker
+  run: docker run test-automation mvn test
+Test Dağıtımı:
+Selenium Grid kullanımı
+Zalenium entegrasyonu
+BrowserStack/SauceLabs entegrasyonu
+Performans Metrikleri:
+Test çalışma süreleri
+Başarı/başarısızlık oranları
+Trend analizleri
+Güvenlik Taramaları:
+yaml
+CopyInsert
+- name: Security Scan
+  uses: aquasecurity/trivy-action@master
+  with:
+    scan-type: 'fs'
+    ignore-unfixed: true
+Bu yapılandırmayı projenize ekledikten sonra, her commit ve PR'da testleriniz otomatik olarak çalışacak ve sonuçları raporlanacaktır. Hangi konuda daha detaylı bilgi istersiniz?
+
+# GitHub Actions ve Docker ile CI/CD Süreci
+
+## 1. GitHub Actions Nedir?
+GitHub Actions, GitHub'ın sunduğu bir CI/CD aracıdır. Jenkins'ten farklı olarak:
+- Sunucu kurulumu gerektirmez
+- GitHub ile tam entegre çalışır
+- YAML formatında yapılandırılır
+- Ücretsiz kullanım kotası sunar
+
+## 2. Adım Adım Kurulum
+
+### 2.1. GitHub Repository Hazırlığı
+1. Projenizi GitHub'a push edin
+2. Repository'nizde `.github/workflows` klasörünü oluşturun
+3. Bu klasör içine `test-automation.yml` dosyasını ekleyin
+
+### 2.2. Workflow Dosyası Açıklaması
+```yaml
+name: Test Automation Pipeline  # Pipeline'ın adı
+
+on:  # Pipeline'ı tetikleyecek olaylar
+  push:
+    branches: [ main, develop ]  # main ve develop branch'lerine push yapıldığında
+  pull_request:
+    branches: [ main, develop ]  # PR açıldığında
+  schedule:
+    - cron: '0 0 * * *'  # Her gece yarısı
+  workflow_dispatch:  # Manuel tetikleme için
+```
+
+### 2.3. Test Ortamı Yapılandırması
+```yaml
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Ubuntu işletim sistemi kullanılacak
+    strategy:
+      matrix:
+        java: [ '11', '17' ]  # İki farklı Java versiyonu
+        environment: [ 'staging', 'qa' ]  # İki farklı test ortamı
+```
+
+Bu yapılandırma:
+- Her push/PR için 4 farklı kombinasyonda test çalıştırır
+- Java 11 + staging
+- Java 11 + qa
+- Java 17 + staging
+- Java 17 + qa
+
+## 3. Docker Entegrasyonu
+
+### 3.1. Docker Nedir?
+Docker, uygulamaları konteynerler içinde çalıştırmanızı sağlar. Avantajları:
+- Her ortamda aynı şekilde çalışır
+- Bağımlılıkları izole eder
+- Hızlı kurulum ve kaldırma
+
+### 3.2. Dockerfile Oluşturma
+Projenizin kök dizininde `Dockerfile` oluşturun:
+
+```dockerfile
+# Base image olarak Java 11 kullanan Maven image
+FROM maven:3.8.4-openjdk-11
+
+# Çalışma dizini oluştur
+WORKDIR /app
+
+# POM dosyasını kopyala
+COPY pom.xml .
+
+# Bağımlılıkları indir
+RUN mvn dependency:go-offline
+
+# Kaynak kodları kopyala
+COPY src ./src
+
+# Testleri çalıştır
+CMD ["mvn", "test"]
+```
+
+### 3.3. Docker Compose ile Çalıştırma
+`docker-compose.yml` dosyası oluşturun:
+
+```yaml
+version: '3'
+services:
+  test:
+    build: .
+    volumes:
+      - ./target:/app/target
+    environment:
+      - TEST_ENVIRONMENT=staging
+```
+
+## 4. Adım Adım Test Çalıştırma
+
+### 4.1. Lokal Geliştirme
+```bash
+# Projeyi klonla
+git clone <repo-url>
+
+# Branch oluştur
+git checkout -b feature/new-tests
+
+# Değişiklikleri yap ve commit
+git add .
+git commit -m "Yeni testler eklendi"
+
+# GitHub'a push
+git push origin feature/new-tests
+```
+
+### 4.2. GitHub Actions ile Test
+1. GitHub'da PR oluşturun
+2. Actions sekmesinde testlerin çalışmasını izleyin
+3. Test sonuçlarını ve Allure raporlarını inceleyin
+
+### 4.3. Docker ile Lokal Test
+```bash
+# Docker image oluştur
+docker build -t test-automation .
+
+# Testleri çalıştır
+docker run test-automation
+
+# Ya da Docker Compose ile
+docker-compose up
+```
+
+## 5. Raporlama ve İzleme
+
+### 5.1. Allure Raporları
+```bash
+# Rapor oluştur
+mvn allure:report
+
+# Raporu görüntüle
+mvn allure:serve
+```
+
+### 5.2. GitHub'da Sonuçları İzleme
+1. GitHub repository -> Actions sekmesi
+2. İlgili workflow çalıştırmasını seç
+3. Test sonuçları ve artifactları görüntüle
+
+## 6. Yaygın Sorunlar ve Çözümleri
+
+### 6.1. GitHub Actions Sorunları
+- **Hata**: Workflow çalışmıyor
+  **Çözüm**: `.github/workflows` klasör yapısını kontrol edin
+
+- **Hata**: Testler timeout'a düşüyor
+  **Çözüm**: Workflow'da timeout süresini artırın
+
+### 6.2. Docker Sorunları
+- **Hata**: Image oluşturulmuyor
+  **Çözüm**: Dockerfile syntax'ını kontrol edin
+
+- **Hata**: Testler container'da çalışmıyor
+  **Çözüm**: Volume mapping'leri kontrol edin
+
+## 7. Best Practices
+
+1. **Versiyonlama**:
+   - Semantic versioning kullanın
+   - Tag'leri düzenli oluşturun
+
+2. **Test İzolasyonu**:
+   - Her test bağımsız çalışabilmeli
+   - Test verileri her çalıştırmada temizlenmeli
+
+3. **Güvenlik**:
+   - Hassas bilgileri GitHub Secrets'da saklayın
+   - Docker image'larını düzenli güncelleyin

@@ -1,6 +1,7 @@
 package com.thinkingtesters.hooks;
 
 import com.thinkingtesters.driver.DriverManager;
+import com.thinkingtesters.utils.KnownIssueHandler;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -25,17 +26,16 @@ public class Hooks {
 
     @Before
     public void setUp(Scenario scenario) {
+        if (KnownIssueHandler.shouldSkipScenario(scenario)) {
+            String skipReason = KnownIssueHandler.getSkipReason(scenario);
+            logger.warn("Skipping scenario '{}': {}", scenario.getName(), skipReason);
+            Assume.assumeTrue(skipReason, false);
+        }
+        
         logger.info("Starting scenario: {}", scenario.getName());
         DriverManager.initializeDriver();
     }
 
-    @Before
-    public void skipKnownIssues(Scenario scenario) {
-        if (scenario.getSourceTagNames().contains("@KnownIssue")) {
-            logger.warn("Skipping test due to known issue: " + scenario.getName());
-            Assume.assumeTrue(false); // Testi "skipped" olarak işaretler
-        }
-    }
     @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {

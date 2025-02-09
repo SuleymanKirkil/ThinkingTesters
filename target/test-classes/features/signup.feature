@@ -15,7 +15,7 @@ Feature: Sign Up Functionality
     And I click the sign up submit button
     Then I should be registered successfully
     And I should be redirected to the contact list page
-    Then I sholud delete user through api request
+    Then I should delete user through api request
 
   Scenario: Cancel sign up process
     When I click the cancel button
