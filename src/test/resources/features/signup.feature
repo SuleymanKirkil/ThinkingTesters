@@ -72,7 +72,7 @@ Feature: Sign Up Functionality
       | password | errorMessage                           |
       | test     | shorter than the minimum allowed length (7) |
 
-    @KnownIssue
+    @KnownIssue # bilinenen bir hata düzeltilinceye kadar aşağıdaki değerleriçin test atlanacak
     Examples:
       | password | errorMessage                                |
       | 12345678 | Password must contain at least one letter   |
