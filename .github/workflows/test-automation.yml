@@ -1,13 +1,11 @@
-name: Test Automation Pipeline
+name: Test Automation
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, develop ]
-  schedule:
-    - cron: '0 0 * * *'  # Daily midnight run
-  workflow_dispatch:  # Manual trigger
+    branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -19,17 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ 17 ]
         environment: [ qa, staging ]
       fail-fast: false
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
-    - name: Set up Java
+    - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
-        java-version: ${{ matrix.java }}
+        java-version: '11'
         distribution: 'temurin'
         cache: maven
 
@@ -40,10 +37,14 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
 
-    - name: Setup Chrome
+    - name: Set up Chrome
       uses: browser-actions/setup-chrome@latest
-      with:
-        chrome-version: stable
+
+    - name: Set up Xvfb
+      run: |
+        sudo apt-get install -y xvfb
+        Xvfb :99 &
+        echo "DISPLAY=:99" >> $GITHUB_ENV
 
     - name: Run Tests
       env:
@@ -51,10 +52,7 @@ jobs:
         TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
         TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
       run: |
-        sudo apt-get update
-        sudo apt-get install -y xvfb
-        Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
-        mvn clean test \
+        mvn test \
         -Dtest.environment=${{ matrix.environment }} \
         -Dcucumber.filter.tags="not @KnownIssue" \
         -Dbrowser=chrome \
@@ -80,7 +78,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: test-results-${{ matrix.environment }}-java${{ matrix.java }}
+        name: test-results-${{ matrix.environment }}
         path: |
           target/cucumber-reports/
           target/allure-results/
@@ -90,7 +88,7 @@ jobs:
       if: always()
       uses: dorny/test-reporter@v1
       with:
-        name: Test Results (${{ matrix.environment }} - Java ${{ matrix.java }})
+        name: Test Results (${{ matrix.environment }})
         path: target/surefire-reports/*.xml
         reporter: java-junit
 

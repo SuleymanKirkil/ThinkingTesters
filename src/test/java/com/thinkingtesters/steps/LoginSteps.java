@@ -1,6 +1,7 @@
 package com.thinkingtesters.steps;
 
 import com.thinkingtesters.config.Configuration;
+import com.thinkingtesters.utils.TestDataConfig;
 import com.thinkingtesters.driver.DriverManager;
 import com.thinkingtesters.pages.LoginPage;
 import io.cucumber.java.en.Given;
@@ -37,6 +38,18 @@ public class LoginSteps {
 
     @When("I enter login password {string}")
     public void iEnterPassword(String password) {
+        loginPage.enterPassword(password);
+    }
+
+    @When("I enter valid email for environment")
+    public void iEnterValidEmailForEnvironment() {
+        String email = TestDataConfig.getTestUserEmail();
+        loginPage.enterEmail(email);
+    }
+
+    @When("I enter valid password for environment")
+    public void iEnterValidPasswordForEnvironment() {
+        String password = TestDataConfig.getTestUserPassword();
         loginPage.enterPassword(password);
     }
 

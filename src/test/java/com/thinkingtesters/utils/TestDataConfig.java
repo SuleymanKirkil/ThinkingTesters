@@ -10,6 +10,7 @@ import java.util.Properties;
 public class TestDataConfig {
     private static final Logger logger = LogManager.getLogger(TestDataConfig.class);
     private static final Properties props = new Properties();
+    private static final String currentEnv = System.getProperty("test.environment", "qa");
 
     static {
         try (InputStream input = TestDataConfig.class.getClassLoader().getResourceAsStream("test-data.properties")) {
@@ -25,11 +26,11 @@ public class TestDataConfig {
     }
 
     public static String getTestUserEmail() {
-        return props.getProperty("test.user.email");
+        return props.getProperty(currentEnv + ".test.user.email");
     }
 
     public static String getTestUserPassword() {
-        return props.getProperty("test.user.password");
+        return props.getProperty(currentEnv + ".test.user.password");
     }
 
     public static String getInvalidEmail() {
