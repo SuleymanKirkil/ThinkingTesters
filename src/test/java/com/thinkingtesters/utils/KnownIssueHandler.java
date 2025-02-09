@@ -6,8 +6,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.Optional;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 public class KnownIssueHandler {
     private static final Logger logger = LogManager.getLogger(KnownIssueHandler.class);
@@ -18,7 +19,7 @@ public class KnownIssueHandler {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_DATE;
 
     public static boolean shouldSkipScenario(Scenario scenario) {
-        Set<String> tags = scenario.getSourceTagNames();
+        Collection<String> tags = scenario.getSourceTagNames();
         
         if (!tags.contains(KNOWN_ISSUE_TAG)) {
             return false;
@@ -53,7 +54,7 @@ public class KnownIssueHandler {
     }
 
     public static String getSkipReason(Scenario scenario) {
-        Set<String> tags = scenario.getSourceTagNames();
+        Collection<String> tags = scenario.getSourceTagNames();
         
         StringBuilder reason = new StringBuilder("Test skipped due to known issue");
         
@@ -72,7 +73,7 @@ public class KnownIssueHandler {
         return reason.toString();
     }
 
-    private static Optional<String> findTagWithPrefix(Set<String> tags, String prefix) {
+    private static Optional<String> findTagWithPrefix(Collection<String> tags, String prefix) {
         return tags.stream()
                 .filter(tag -> tag.startsWith(prefix))
                 .findFirst();
