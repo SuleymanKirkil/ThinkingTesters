@@ -1,0 +1,106 @@
+/*
+@KnownIssue tag'i ile bilinen hataları atlamak için kullandığınız yaklaşım mantıklı bir çözüm. Ancak bunu daha etkili ve yönetilebilir hale getirmek için birkaç önerim olacak:
+
+Öncelikle bir @KnownIssue annotation'ı ile birlikte bir açıklama tag'i de eklemek faydalı olabilir. Örneğin:
+gherkin
+CopyInsert
+@KnownIssue @bug=JIRA-123
+Scenario: Successful sign up with valid information
+Hooks sınıfında şu şekilde bir implementasyon öneriyorum:
+Edited
+Hooks.java
++9
+-7
+ 65
+Open diff
+Bu yaklaşımın avantajları:
+
+İzlenebilirlik: Bug ID'si ile hangi issue'dan dolayı testin atlandığını takip edebilirsiniz.
+Raporlama: Test raporlarında "skipped" olarak görünecek ve neden atlandığı açıkça belirtilecek.
+Geçici Çözüm: Issue çözüldüğünde sadece tag'i kaldırmanız yeterli olacak, kod değişikliği gerekmeyecek.
+Detaylı Loglama: Hangi testlerin neden atlandığını loglarda görebileceksiniz.
+Kullanım örneği:
+
+gherkin
+CopyInsert
+@SigUpFeatures @KnownIssue @bug=JIRA-456
+Feature: Sign Up Functionality
+  ...
+
+# Ya da sadece belirli senaryolar için:
+@KnownIssue @bug=JIRA-789
+Scenario: Successful sign up with valid information
+  ...
+Ayrıca, opsiyonel olarak şunları da ekleyebilirsiniz:
+
+Expire Date: Ne zamana kadar bu issue'ın geçerli olduğunu belirtmek için:
+gherkin
+CopyInsert
+@KnownIssue @bug=JIRA-123 @expires=2024-03-01
+Environment Specific: Sadece belirli ortamlarda bu issue varsa:
+gherkin
+CopyInsert
+@KnownIssue @bug=JIRA-123 @env=staging
+Bu özellikler için Hooks sınıfını genişletebilirsiniz. İsterseniz bu ek özelliklerin implementasyonunu da gösterebilirim.
+
+Me
+
+implementasyonu gösterirmisin
+
+Genişletilmiş implementasyonu gösteriyorum. Önce bir yardımcı sınıf oluşturalım ve sonra Hooks sınıfını güncelleyelim.
+
+İlk olarak, known issue'ları yönetmek için bir yardımcı sınıf oluşturalım:
+
+Created
+KnownIssueHandler.java
++81
+-0
+ 0
+Open diff
+Şimdi de Hooks sınıfını güncelleyelim:
+
+Edited
+Hooks.java
++5
+-7
+ 67
+Open diff
+Bu implementasyon şu özellikleri destekler:
+
+Temel Known Issue Skip:
+gherkin
+CopyInsert
+@KnownIssue
+Scenario: Some scenario
+Bug ID ile Skip:
+gherkin
+CopyInsert
+@KnownIssue @bug=JIRA-123
+Scenario: Some scenario
+Son Kullanma Tarihli Skip:
+gherkin
+CopyInsert
+@KnownIssue @bug=JIRA-123 @expires=2024-03-01
+Scenario: Some scenario
+Ortama Özel Skip:
+gherkin
+CopyInsert
+@KnownIssue @bug=JIRA-123 @env=staging
+Scenario: Some scenario
+Kombinasyonlar:
+gherkin
+CopyInsert
+@KnownIssue @bug=JIRA-123 @env=staging @expires=2024-03-01
+Scenario: Some scenario
+Özellikler:
+
+Ortam Kontrolü: Test ortamını test.environment system property'sinden alır. Varsayılan olarak "local" kullanır. Testi çalıştırırken -Dtest.environment=staging gibi bir parametre ile ortamı belirtebilirsiniz.
+Tarih Kontrolü: @expires tag'i ile belirtilen tarih geçmişse, test artık atlanmaz ve bir uyarı log'u oluşturulur. Bu, eski known issue tag'lerinin temizlenmesini hatırlatır.
+Detaylı Loglama: Test atlandığında, neden atlandığı (bug ID, ortam, son kullanma tarihi) detaylı bir şekilde log'lanır.
+Esnek Yapı: KnownIssueHandler sınıfı, yeni tag'ler veya kontroller eklemek için kolayca genişletilebilir.
+Test raporlarında atlanmış testler şu şekilde görünecektir:
+
+CopyInsert
+Skipped scenario 'Successful sign up': Test skipped due to known issue: JIRA-123 (Environment: staging) (Expires: 2024-03-01)
+Bu yapıyı kullanarak, bilinen hataları daha yönetilebilir ve izlenebilir bir şekilde yönetebilirsiniz. Ayrıca, hataların ne zaman çözüleceği konusunda da takip yapabilirsiniz.
+*/

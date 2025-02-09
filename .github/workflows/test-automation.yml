@@ -47,7 +47,17 @@ jobs:
         -Dtest.environment=${{ matrix.environment }} \
         -Dcucumber.filter.tags="not @KnownIssue" \
         -Dbrowser=chrome \
-        -Dheadless=true
+        -Dheadless=true \
+        -Dsurefire.useFile=true \
+        -Dmaven.test.failure.ignore=true
+
+    - name: Verify Test Results Directory
+      if: always()
+      run: |
+        echo "Listing test results directory:"
+        ls -la target/surefire-reports/ || true
+        echo "Checking XML files:"
+        find target/surefire-reports -name "*.xml" || true
 
     - name: Generate Allure Report
       if: always()

@@ -271,3 +271,149 @@ mvn allure:serve
 3. **Güvenlik**:
    - Hassas bilgileri GitHub Secrets'da saklayın
    - Docker image'larını düzenli güncelleyin
+
+## Jenkins vs GitHub Actions Karşılaştırması
+
+### 1. Kurulum ve Yönetim
+
+#### Jenkins
+✅ **Avantajlar**:
+- Tam kontrol ve özelleştirme imkanı
+- Şirket içi (on-premise) güvenlik politikalarına uygunluk
+- Özel ağ ve VPN entegrasyonu
+- Sınırsız build süresi ve kaynak kullanımı
+
+❌ **Dezavantajlar**:
+- Sunucu kurulumu ve bakımı gerektirir
+- Güvenlik güncellemeleri manuel yapılmalı
+- Plugin uyumluluk sorunları olabilir
+- Yüksek yönetim maliyeti
+
+#### GitHub Actions
+✅ **Avantajlar**:
+- Sıfır kurulum ve bakım
+- Otomatik güncellemeler
+- GitHub ile tam entegrasyon
+- Hızlı başlangıç ve kolay yapılandırma
+
+❌ **Dezavantajlar**:
+- Sınırlı ücretsiz dakika (2000 dk/ay)
+- GitHub'a bağımlılık
+- Özelleştirme sınırlamaları
+- Şirket içi sistemlerle entegrasyon zorluğu
+
+### 2. Kullanım Senaryoları
+
+#### Jenkins Tercih Edilmeli
+1. **Kurumsal Projeler**:
+   - Yüksek güvenlik gereksinimleri
+   - Özel ağ gereksinimleri
+   - Şirket içi sistemlerle entegrasyon
+
+2. **Karmaşık Pipeline'lar**:
+   - Çok sayıda özel adım
+   - İleri düzey scripting ihtiyacı
+   - Legacy sistem entegrasyonları
+
+3. **Yüksek Kaynak İhtiyacı**:
+   - Uzun süren buildler
+   - Yüksek CPU/RAM gereksinimleri
+   - Paralel job çalıştırma
+
+#### GitHub Actions Tercih Edilmeli
+1. **Açık Kaynak Projeler**:
+   - Hızlı kurulum
+   - Topluluk katkısına açıklık
+   - Düşük maliyet
+
+2. **Küçük-Orta Ölçekli Projeler**:
+   - Basit pipeline ihtiyaçları
+   - GitHub ile entegre workflow
+   - Hızlı geliştirme döngüsü
+
+3. **Modern Cloud Projeler**:
+   - Container bazlı deploymentlar
+   - Serverless mimariler
+   - Cloud servis entegrasyonları
+
+### 3. Syntax ve Öğrenme Eğrisi
+
+#### Jenkins
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    }
+}
+```
+- Groovy tabanlı DSL
+- Daha karmaşık syntax
+- Zengin plugin ekosistemi
+- Daha uzun öğrenme süresi
+
+#### GitHub Actions
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: mvn clean package
+```
+- YAML tabanlı basit syntax
+- Daha az öğrenme süresi
+- Marketplace üzerinden hazır actions
+- Modern ve anlaşılır format
+
+### 4. Maliyet Karşılaştırması
+
+#### Jenkins
+- Sunucu maliyeti
+- Bakım maliyeti
+- DevOps personel maliyeti
+- Sınırsız kullanım
+
+#### GitHub Actions
+- Ücretsiz: 2000 dk/ay
+- Pro: Ek dakika başına ücret
+- Sıfır bakım maliyeti
+- Düşük yönetim maliyeti
+
+### 5. En İyi Kullanım Önerileri
+
+#### Hibrit Yaklaşım
+1. **GitHub Actions**:
+   - CI süreçleri (build, test)
+   - Code review otomasyonları
+   - Dokümantasyon güncellemeleri
+
+2. **Jenkins**:
+   - CD süreçleri (deployment)
+   - Karmaşık orkestrasyon
+   - Özel güvenlik gerektiren işlemler
+
+#### Seçim Kriterleri
+1. **Proje Büyüklüğü**
+2. **Güvenlik Gereksinimleri**
+3. **Bütçe**
+4. **Teknik Ekip Yetkinliği**
+5. **Entegrasyon İhtiyaçları**
+
+### 6. Performans ve Ölçeklenebilirlik
+
+#### Jenkins
+- Yatay ve dikey ölçekleme
+- Agent node'lar ile dağıtık yapı
+- Özel kaynak yönetimi
+- Load balancing
+
+#### GitHub Actions
+- Otomatik ölçekleme
+- GitHub tarafından yönetilen kaynaklar
+- Sınırlı özelleştirme
+- Cloud-native yapı
