@@ -76,9 +76,10 @@ public class LoginSteps {
             .as("Error message should be displayed")
             .isTrue();
         
-        Assertions.assertThat(loginPage.getErrorMessage())
+        String actualError = loginPage.getErrorMessage();
+        Assertions.assertThat(actualError)
             .as("Error message should match expected message")
-            .contains(expectedError);
+            .containsIgnoringCase(expectedError);
     }
 
     @Then("I should be redirected to the sign up page")

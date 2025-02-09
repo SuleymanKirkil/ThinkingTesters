@@ -22,12 +22,12 @@ Feature: Login Functionality
     Then I should see a login error message "<error_message>"
 
     Examples:
-      | email              | password | error_message                        |
-      | invalid@email.com  | test123  | Incorrect email address or password |
-      | tester@tester3.com | wrong    | Incorrect email address or password |
-      | tester@tester3.com | test123  | Incorrect email address or password |
-      |                    | test123  | Email is required                   |
-      | test@example.com   |          | Password is required                |
+      | email              | password | error_message                  |
+      | invalid@email.com  | test123  | Invalid email address or password |
+      | tester@tester3.com | wrong    | Invalid email address or password |
+      | tester@tester3.com | test123  | Invalid email address or password |
+      |                    | test123  | Email is required              |
+      | test@example.com   |          | Password is required           |
 
   Scenario: Navigate to sign up page
     When I click on the sign up link

@@ -46,14 +46,29 @@ jobs:
         Xvfb :99 &
         echo "DISPLAY=:99" >> $GITHUB_ENV
 
+    - name: Set Environment Variables
+      run: |
+        if [ "${{ matrix.environment }}" = "qa" ]; then
+          echo "TEST_USER_EMAIL=${{ secrets.QA_TEST_USER_EMAIL }}" >> $GITHUB_ENV
+          echo "TEST_USER_PASSWORD=${{ secrets.QA_TEST_USER_PASSWORD }}" >> $GITHUB_ENV
+        else
+          echo "TEST_USER_EMAIL=${{ secrets.STAGING_TEST_USER_EMAIL }}" >> $GITHUB_ENV
+          echo "TEST_USER_PASSWORD=${{ secrets.STAGING_TEST_USER_PASSWORD }}" >> $GITHUB_ENV
+        fi
+
     - name: Run Tests
       env:
         DISPLAY: :99
+        CI: true
         TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
         TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
       run: |
         mvn test \
         -Dtest.environment=${{ matrix.environment }} \
+        -DCI=true \
+        -Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG \
+        -Dwebdriver.chrome.verboseLogging=true \
+        -Dselenium.webdriver.verbose=true \
         -Dcucumber.filter.tags="not @KnownIssue" \
         -Dbrowser=chrome \
         -Dheadless=true \
@@ -83,6 +98,7 @@ jobs:
           target/cucumber-reports/
           target/allure-results/
           target/surefire-reports/
+          target/screenshots/
 
     - name: Publish Test Results
       if: always()

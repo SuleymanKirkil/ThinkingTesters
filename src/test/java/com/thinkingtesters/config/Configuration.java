@@ -42,8 +42,9 @@ public class Configuration {
         return properties.getProperty("base.url", "https://thinking-tester-contact-list.herokuapp.com");
     }
 
-    public int getExplicitWaitTimeout() {
-        return Integer.parseInt(properties.getProperty("explicit.wait.timeout", "30"));
+    public static int getExplicitWaitTimeout() {
+        return getInstance().properties.getProperty("explicit.wait.timeout", "30") != null ?
+            Integer.parseInt(getInstance().properties.getProperty("explicit.wait.timeout", "30")) : 30;
     }
 
     public String getBrowser() {
