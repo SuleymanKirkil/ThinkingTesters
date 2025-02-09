@@ -24,33 +24,44 @@ logs/
 hs_err_pid*
 replay_pid*
 
-# IDE-specific files
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE
 .idea/
 *.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+.factorypath
 .vscode/
 *.swp
 *.swo
 
-# Build directories
-target/
-build/
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Maven
-.mvn/
-mvnw
-mvnw.cmd
-
-# Test reports and results
+# Test reports
 allure-results/
 test-output/
+reports/
+cucumber-reports/
+surefire-reports/
 extent-reports/
-
-# Environment-specific files
-.env
-.env.*
-application-*.properties
-!application-example.properties
-
-# OS-specific files
-.DS_Store
-Thumbs.db
