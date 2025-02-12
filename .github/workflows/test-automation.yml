@@ -18,17 +18,15 @@ jobs:
     strategy:
       matrix:
         environment: [ qa, staging ]
-        # Farklı tarayıcılarda test çalıştırmak için yorum satırını kaldırın
-        # browser: [ chrome, firefox, edge ]
       fail-fast: false
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'temurin'
         cache: maven
 
@@ -42,29 +40,18 @@ jobs:
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@latest
 
-    # Firefox kurulumu için yorum satırını kaldırın
-    # - name: Set up Firefox
-    #   uses: browser-actions/setup-firefox@latest
-
-    # Edge kurulumu için yorum satırını kaldırın
-    # - name: Set up Edge
-    #   uses: browser-actions/setup-edge@latest
-
     - name: Set up Xvfb
       run: |
         sudo apt-get install -y xvfb
         Xvfb :99 &
         echo "DISPLAY=:99" >> $GITHUB_ENV
 
-    - name: Set Environment Variables
+    - name: Create Directories
       run: |
-        if [ "${{ matrix.environment }}" = "qa" ]; then
-          echo "TEST_USER_EMAIL=${{ secrets.QA_TEST_USER_EMAIL }}" >> $GITHUB_ENV
-          echo "TEST_USER_PASSWORD=${{ secrets.QA_TEST_USER_PASSWORD }}" >> $GITHUB_ENV
-        else
-          echo "TEST_USER_EMAIL=${{ secrets.STAGING_TEST_USER_EMAIL }}" >> $GITHUB_ENV
-          echo "TEST_USER_PASSWORD=${{ secrets.STAGING_TEST_USER_PASSWORD }}" >> $GITHUB_ENV
-        fi
+        mkdir -p target/cucumber-reports
+        mkdir -p target/surefire-reports
+        mkdir -p target/allure-results
+        mkdir -p target/screenshots
 
     - name: Run Tests
       env:
@@ -73,43 +60,29 @@ jobs:
         TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
         TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
       run: |
-        mvn clean verify \
+        mvn clean test \
         -Dtest.environment=${{ matrix.environment }} \
         -DCI=true \
-        -Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG \
         -Dwebdriver.chrome.verboseLogging=true \
         -Dselenium.webdriver.verbose=true \
-        -Dcucumber.filter.tags="not @KnownIssue" \
         -Dbrowser=chrome \
         -Dheadless=true \
         -Dsurefire.useFile=true \
         -Dmaven.test.failure.ignore=true \
         -Dtest.user.email=${TEST_USER_EMAIL} \
-        -Dtest.user.password=${TEST_USER_PASSWORD} \
-        -Dcucumber.plugin="json:target/cucumber-reports/cucumber.json"
+        -Dtest.user.password=${TEST_USER_PASSWORD}
 
-    - name: Generate Cucumber Report
+    - name: Generate Cucumber Reports
       if: always()
       run: |
         mvn verify -DskipTests \
-        -Dcucumber.report.json.location=target/cucumber-reports/cucumber.json
+        -Dcucumber.plugin="json:target/cucumber-reports/cucumber.json,html:target/cucumber-reports/cucumber-pretty"
 
-    - name: Create Test Report Directories
-      if: always()
-      run: |
-        mkdir -p target/cucumber-reports
-        mkdir -p target/surefire-reports
-        mkdir -p target/allure-results
-        mkdir -p target/screenshots
-
-    - name: Verify Test Results Directory
+    - name: List Generated Files
       if: always()
       run: |
         echo "Listing test results directories:"
-        ls -la target/cucumber-reports/ || true
-        ls -la target/surefire-reports/ || true
-        ls -la target/allure-results/ || true
-        ls -la target/screenshots/ || true
+        ls -R target/
 
     - name: Upload Test Results
       if: always()
@@ -123,48 +96,11 @@ jobs:
           target/screenshots/
         if-no-files-found: warn
 
-    - name: Test Report
+    - name: Publish Test Results
       uses: dorny/test-reporter@v1
       if: always()
       with:
         name: Test Results (${{ matrix.environment }})
-        path: target/surefire-reports/*.xml
+        path: "target/surefire-reports/TEST-*.xml"
         reporter: java-junit
         fail-on-error: false
-
-    - name: Generate Allure Report
-      if: always()
-      run: mvn allure:report
-
-    # E-posta ile test sonuçlarını göndermek için yorum satırını kaldırın
-    # - name: Send Email
-    #   if: always()
-    #   uses: dawidd6/action-send-mail@v3
-    #   with:
-    #     server_address: smtp.gmail.com
-    #     server_port: 465
-    #     username: ${{ secrets.EMAIL_USERNAME }}
-    #     password: ${{ secrets.EMAIL_PASSWORD }}
-    #     subject: Test Results - ${{ github.repository }}
-    #     body: |
-    #       Test results for ${{ github.repository }}
-    #       Environment: ${{ matrix.environment }}
-    #       Status: ${{ job.status }}
-    #       See detailed results in the GitHub Actions tab.
-    #     to: your-email@example.com
-    #     from: GitHub Actions
-    #     attachments: target/surefire-reports/*.xml,target/allure-results/
-
-  notify:
-    needs: test
-    runs-on: ubuntu-latest
-    if: always()
-    steps:
-    - name: Notify Slack
-      uses: 8398a7/action-slack@v3
-      with:
-        status: ${{ job.status }}
-        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      if: always()
