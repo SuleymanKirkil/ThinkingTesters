@@ -4,64 +4,41 @@ on:
   workflow_dispatch:
     inputs:
       test_environment:
-        description: 'Select test environment'
+        description: 'Test Environment'
         required: true
         default: 'qa'
         type: choice
         options:
-        - qa
-        - staging
+          - qa
+          - staging
       browser_set:
-        description: 'Select browser set'
+        description: 'Browser Set'
         required: true
-        default: 'chrome'
+        default: 'all'
         type: choice
         options:
-        - chrome
-        - firefox
-        - edge
-        - safari
-        - all
-
-permissions:
-  contents: read
-  checks: write
-  pull-requests: write
+          - all
+          - chrome
+          - firefox
+          - edge
+          - safari
 
 jobs:
   test:
     strategy:
       matrix:
-        include:
-          # Chrome tests
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        browser: [chrome, firefox, edge]
+        exclude:
+          # Safari sadece macOS'ta çalışır
           - os: ubuntu-latest
-            browser: chrome
-          - os: windows-latest
-            browser: chrome
-          - os: macos-latest
-            browser: chrome
-          
-          # Firefox tests
-          - os: ubuntu-latest
-            browser: firefox
-          - os: windows-latest
-            browser: firefox
-          - os: macos-latest
-            browser: firefox
-          
-          # Edge tests (Windows ve macOS)
-          - os: windows-latest
-            browser: edge
-          - os: macos-latest
-            browser: edge
-          
-          # Safari tests (sadece macOS)
-          - os: macos-latest
             browser: safari
+          - os: windows-latest
+            browser: safari
+          # Edge Linux'ta çalışmaz
+          - os: ubuntu-latest
+            browser: edge
       fail-fast: false
-    
-    # Browser set'e göre matrix filtreleme
-    if: inputs.browser_set == 'all' || inputs.browser_set == matrix.browser || (inputs.browser_set == 'safari' && matrix.browser == 'safari' && matrix.os == 'macos-latest')
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -83,7 +60,7 @@ jobs:
       uses: browser-actions/setup-firefox@latest
 
     - name: Set up Edge
-      if: matrix.browser == 'edge'
+      if: matrix.browser == 'edge' && matrix.os != 'ubuntu-latest'
       uses: browser-actions/setup-edge@latest
 
     - name: Set up Safari (macOS only)
@@ -128,7 +105,7 @@ jobs:
       if: always()
       run: |
         echo "Checking if cucumber.json exists"
-        ls -l target/cucumber-reports/ || true
+        ls -l target/cucumber-reports/
         echo "Generating Cucumber Reports"
         mvn verify -DskipTests \
         -Dcucumber.report.formats=json \
