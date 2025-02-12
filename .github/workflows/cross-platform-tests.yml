@@ -72,6 +72,32 @@ jobs:
           -Dtest.environment=${{ inputs.test_environment }} \
           -Dbrowser=chrome \
           -Dheadless=true
+      - name: Generate Cucumber Reports
+        if: always()
+        run: |
+          mvn verify -DskipTests \
+          -Dcucumber.report.formats=json,html \
+          -Dcucumber.report.outputDirectory=target/cucumber-reports \
+          -Dcucumber.json.output.directory=target/cucumber-reports \
+          -Dcucumber.json.output.file=target/cucumber-reports/cucumber.json
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-chrome-${{ matrix.os }}
+          path: |
+            target/cucumber-reports/
+            target/surefire-reports/
+            target/screenshots/
+          if-no-files-found: warn
+      - name: Publish Test Results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Chrome Test Results (${{ matrix.os }})
+          path: target/surefire-reports/TEST-*.xml
+          reporter: java-junit
+          fail-on-error: false
 
   firefox-tests:
     name: Firefox - ${{ matrix.os }}
@@ -116,6 +142,32 @@ jobs:
           -Dtest.environment=${{ inputs.test_environment }} \
           -Dbrowser=firefox \
           -Dheadless=true
+      - name: Generate Cucumber Reports
+        if: always()
+        run: |
+          mvn verify -DskipTests \
+          -Dcucumber.report.formats=json,html \
+          -Dcucumber.report.outputDirectory=target/cucumber-reports \
+          -Dcucumber.json.output.directory=target/cucumber-reports \
+          -Dcucumber.json.output.file=target/cucumber-reports/cucumber.json
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-firefox-${{ matrix.os }}
+          path: |
+            target/cucumber-reports/
+            target/surefire-reports/
+            target/screenshots/
+          if-no-files-found: warn
+      - name: Publish Test Results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Firefox Test Results (${{ matrix.os }})
+          path: target/surefire-reports/TEST-*.xml
+          reporter: java-junit
+          fail-on-error: false
 
   edge-tests:
     name: Edge - ${{ matrix.os }}
@@ -153,6 +205,32 @@ jobs:
           -Dtest.environment=${{ inputs.test_environment }} \
           -Dbrowser=edge \
           -Dheadless=true
+      - name: Generate Cucumber Reports
+        if: always()
+        run: |
+          mvn verify -DskipTests \
+          -Dcucumber.report.formats=json,html \
+          -Dcucumber.report.outputDirectory=target/cucumber-reports \
+          -Dcucumber.json.output.directory=target/cucumber-reports \
+          -Dcucumber.json.output.file=target/cucumber-reports/cucumber.json
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-edge-${{ matrix.os }}
+          path: |
+            target/cucumber-reports/
+            target/surefire-reports/
+            target/screenshots/
+          if-no-files-found: warn
+      - name: Publish Test Results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Edge Test Results (${{ matrix.os }})
+          path: target/surefire-reports/TEST-*.xml
+          reporter: java-junit
+          fail-on-error: false
 
   safari-tests:
     name: Safari - macOS
@@ -179,6 +257,32 @@ jobs:
           -Dtest.environment=${{ inputs.test_environment }} \
           -Dbrowser=safari \
           -Dheadless=true
+      - name: Generate Cucumber Reports
+        if: always()
+        run: |
+          mvn verify -DskipTests \
+          -Dcucumber.report.formats=json,html \
+          -Dcucumber.report.outputDirectory=target/cucumber-reports \
+          -Dcucumber.json.output.directory=target/cucumber-reports \
+          -Dcucumber.json.output.file=target/cucumber-reports/cucumber.json
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-safari-macos
+          path: |
+            target/cucumber-reports/
+            target/surefire-reports/
+            target/screenshots/
+          if-no-files-found: warn
+      - name: Publish Test Results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Safari Test Results (macOS)
+          path: target/surefire-reports/TEST-*.xml
+          reporter: java-junit
+          fail-on-error: false
 
   notify:
     needs: [chrome-tests, firefox-tests, edge-tests, safari-tests]
