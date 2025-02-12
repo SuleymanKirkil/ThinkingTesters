@@ -51,7 +51,17 @@ jobs:
           sudo apt-get install -y xvfb
           Xvfb :99 &
           echo "DISPLAY=:99" >> $GITHUB_ENV
-      - name: Run Tests
+      - name: Run Tests (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: cmd
+        env:
+          CI: true
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+        run: |
+          mvn clean test "-Dtest.environment=${{ inputs.test_environment }}" "-Dbrowser=chrome" "-Dheadless=true"
+      - name: Run Tests (Unix)
+        if: matrix.os != 'windows-latest'
         env:
           CI: true
           TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
@@ -85,7 +95,17 @@ jobs:
           sudo apt-get install -y xvfb
           Xvfb :99 &
           echo "DISPLAY=:99" >> $GITHUB_ENV
-      - name: Run Tests
+      - name: Run Tests (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: cmd
+        env:
+          CI: true
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+        run: |
+          mvn clean test "-Dtest.environment=${{ inputs.test_environment }}" "-Dbrowser=firefox" "-Dheadless=true"
+      - name: Run Tests (Unix)
+        if: matrix.os != 'windows-latest'
         env:
           CI: true
           TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
@@ -113,7 +133,17 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - uses: browser-actions/setup-edge@latest
-      - name: Run Tests
+      - name: Run Tests (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: cmd
+        env:
+          CI: true
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+        run: |
+          mvn clean test "-Dtest.environment=${{ inputs.test_environment }}" "-Dbrowser=edge" "-Dheadless=true"
+      - name: Run Tests (Unix)
+        if: matrix.os != 'windows-latest'
         env:
           CI: true
           TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
