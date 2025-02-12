@@ -33,45 +33,49 @@ jobs:
     name: ${{ matrix.os }} - ${{ matrix.browser }}
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        browser: [chrome, firefox]
         include:
-          # Chrome tests (her zaman)
-          - os: ubuntu-latest
-            browser: chrome
-            run_on: [chrome, all]
-          - os: windows-latest
-            browser: chrome
-            run_on: [chrome, all]
-          - os: macos-latest
-            browser: chrome
-            run_on: [chrome, all]
-          
-          # Firefox tests
-          - os: ubuntu-latest
-            browser: firefox
-            run_on: [firefox, all]
-          - os: windows-latest
-            browser: firefox
-            run_on: [firefox, all]
-          - os: macos-latest
-            browser: firefox
-            run_on: [firefox, all]
-          
           # Edge tests (Windows ve macOS)
           - os: windows-latest
             browser: edge
-            run_on: [edge, all]
           - os: macos-latest
             browser: edge
-            run_on: [edge, all]
-          
           # Safari tests (sadece macOS)
           - os: macos-latest
             browser: safari
-            run_on: [safari, all]
+        exclude:
+          # Edge ve Safari testlerini sadece seçildiklerinde çalıştır
+          - os: windows-latest
+            browser: edge
+            condition: ${{ inputs.browser_set != 'edge' && inputs.browser_set != 'all' }}
+          - os: macos-latest
+            browser: edge
+            condition: ${{ inputs.browser_set != 'edge' && inputs.browser_set != 'all' }}
+          - os: macos-latest
+            browser: safari
+            condition: ${{ inputs.browser_set != 'safari' && inputs.browser_set != 'all' }}
+          # Chrome testlerini sadece seçildiğinde çalıştır
+          - os: ubuntu-latest
+            browser: chrome
+            condition: ${{ inputs.browser_set != 'chrome' && inputs.browser_set != 'all' }}
+          - os: windows-latest
+            browser: chrome
+            condition: ${{ inputs.browser_set != 'chrome' && inputs.browser_set != 'all' }}
+          - os: macos-latest
+            browser: chrome
+            condition: ${{ inputs.browser_set != 'chrome' && inputs.browser_set != 'all' }}
+          # Firefox testlerini sadece seçildiğinde çalıştır
+          - os: ubuntu-latest
+            browser: firefox
+            condition: ${{ inputs.browser_set != 'firefox' && inputs.browser_set != 'all' }}
+          - os: windows-latest
+            browser: firefox
+            condition: ${{ inputs.browser_set != 'firefox' && inputs.browser_set != 'all' }}
+          - os: macos-latest
+            browser: firefox
+            condition: ${{ inputs.browser_set != 'firefox' && inputs.browser_set != 'all' }}
       fail-fast: false
-    
-    # Browser set kontrolü
-    if: contains(matrix.run_on, inputs.browser_set)
     runs-on: ${{ matrix.os }}
 
     steps:
