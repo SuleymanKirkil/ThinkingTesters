@@ -1,9 +1,9 @@
 # Thinking Testers Test Automation Framework
 
-## 🚀 Overview
+## Overview
 This is a robust test automation framework built using Java, Selenium WebDriver, and Cucumber BDD. The framework is designed to support both UI and API testing with a focus on maintainability, readability, and extensibility.
 
-## 🏗 Architecture
+## Architecture
 
 ### Key Components
 - **Page Objects**: Encapsulates the UI elements and their interactions
@@ -31,44 +31,71 @@ src/
 │       └── config/               # Configuration files
 ```
 
-## 🔧 Setup and Configuration
+## Setup and Configuration
 
 ### Prerequisites
-- Java JDK 11 or higher
+- Java JDK 11 veya üzeri
 - Maven
-- Chrome/Firefox browser
+- Chrome/Firefox tarayıcı
+- Allure Report (isteğe bağlı, raporlama için)
+
+### Kullanılan Teknolojiler ve Versiyonlar
+- Selenium WebDriver: 4.16.1
+- Cucumber: 7.15.0
+- RestAssured: 5.5.0
+- Allure Report: 2.24.0
+- Log4j: 2.22.1
+- AssertJ: 3.24.2
+- Lombok: 1.18.30
+- Jackson: 2.16.1
 
 ### Installation
-1. Clone the repository
-2. Install dependencies:
+1. Projeyi klonlayın
+2. Bağımlılıkları yükleyin:
 ```bash
 mvn clean install
 ```
 
-## 🎯 Running Tests
+## Running Tests
 
-### Running All Tests
+### Tüm Testleri Çalıştırma
 ```bash
 mvn clean test
 ```
 
-### Running Specific Features
+### Belirli Özellikleri Çalıştırma
 ```bash
-mvn test -Dcucumber.options="--tags @SigUpFeatures"
+mvn test -Dcucumber.filter.tags="@SignUpFeatures"
 ```
 
-### Environment Configuration
-Set the test environment using:
+### Test Ortamı Yapılandırması
+Test ortamını ayarlamak için:
 ```bash
 mvn test -Dtest.environment=staging
 ```
 
-## 🎨 Features
+### Headless Mode'da Çalıştırma
+```bash
+mvn test -Dheadless=true
+```
+
+### Allure Raporu Oluşturma
+```bash
+mvn allure:report
+```
+
+## Features
 
 ### BDD Testing
-- Cucumber-based BDD implementation
-- Feature files written in Gherkin syntax
-- Organized step definitions
+- Cucumber tabanlı BDD implementasyonu
+- Gherkin sözdiziminde yazılmış özellik dosyaları
+- Organize edilmiş adım tanımlamaları
+
+### CI/CD Entegrasyonu
+- GitHub Actions ile otomatik test çalıştırma
+- Paralel test çalıştırma desteği
+- QA ve Staging ortamları için ayrı test koşumları
+- Test sonuçlarının Allure Report ile raporlanması
 
 ### Known Issue Management
 The framework includes a sophisticated system for handling known issues:
@@ -100,7 +127,7 @@ Scenario: Temporary known issue
 - Reusable API request methods
 - Response validation utilities
 
-## 📝 Best Practices
+## Best Practices
 
 ### Writing Tests
 1. Follow the Page Object pattern for UI elements
@@ -114,19 +141,19 @@ Scenario: Temporary known issue
 3. Set expiration dates for known issues (`@expires=`)
 4. Use environment-specific tags when applicable
 
-## 🤝 Contributing
+## Contributing
 1. Create a feature branch
 2. Commit your changes
 3. Push to the branch
 4. Create a Pull Request
 
-## 📚 Documentation
+## Documentation
 - [Cucumber Documentation](https://cucumber.io/docs/cucumber/)
 - [Selenium Documentation](https://www.selenium.dev/documentation/)
 - [RestAssured Documentation](https://rest-assured.io/)
 
-## 📫 Support
+## Support
 For support and questions, please contact the test automation team or create an issue in the repository.
 
-## 📄 License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details

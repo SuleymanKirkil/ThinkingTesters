@@ -1,6 +1,6 @@
 package com.thinkingtesters.hooks;
 
-import com.thinkingtesters.driver.DriverManager;
+import com.thinkingtesters.utils.DriverManager;
 import com.thinkingtesters.utils.KnownIssueHandler;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -10,9 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Assume;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

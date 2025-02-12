@@ -2,7 +2,7 @@ package com.thinkingtesters.steps;
 
 import com.thinkingtesters.apirequest.UserApiRequests;
 import com.thinkingtesters.config.Configuration;
-import com.thinkingtesters.driver.DriverManager;
+import com.thinkingtesters.utils.DriverManager;
 import com.thinkingtesters.pages.SignUpPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -67,12 +67,6 @@ public class SignUpSteps {
     public void iShouldBeRedirectedToTheContactListPage() {
         DriverManager.getWait().until(driver -> 
             driver.getCurrentUrl().contains("/contactList"));
-    }
-
-    @Then("I should be redirected to the login page")
-    public void iShouldBeRedirectedToTheLoginPage() {
-        DriverManager.getWait().until(driver ->
-                driver.getCurrentUrl().equals(Configuration.getInstance().getBaseUrl() + "/login"));
     }
 
     @Then("I should see an error message {string}")

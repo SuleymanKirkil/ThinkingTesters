@@ -2,7 +2,7 @@ package com.thinkingtesters.steps;
 
 import com.thinkingtesters.config.Configuration;
 import com.thinkingtesters.utils.TestDataConfig;
-import com.thinkingtesters.driver.DriverManager;
+import com.thinkingtesters.utils.DriverManager;
 import com.thinkingtesters.pages.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

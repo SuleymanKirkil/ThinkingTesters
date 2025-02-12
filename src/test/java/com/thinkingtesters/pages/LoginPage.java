@@ -83,4 +83,17 @@ public class LoginPage extends BasePage {
             return false;
         }
     }
+
+    public void navigateToLoginPage() {
+        logger.info("Navigating to login page");
+        driver.get("https://thinking-tester-contact-list.herokuapp.com/login");
+        waitForElementVisible(EMAIL_FIELD);
+    }
+
+    public boolean isOnLoginPage() {
+        logger.info("Checking if on login page");
+        return driver.getCurrentUrl().contains("/login") && 
+               isElementDisplayed(EMAIL_FIELD) && 
+               isElementDisplayed(PASSWORD_FIELD);
+    }
 }

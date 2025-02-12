@@ -18,6 +18,8 @@ jobs:
     strategy:
       matrix:
         environment: [ qa, staging ]
+        # Farklı tarayıcılarda test çalıştırmak için yorum satırını kaldırın
+        # browser: [ chrome, firefox, edge ]
       fail-fast: false
 
     steps:
@@ -39,6 +41,14 @@ jobs:
 
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@latest
+
+    # Firefox kurulumu için yorum satırını kaldırın
+    # - name: Set up Firefox
+    #   uses: browser-actions/setup-firefox@latest
+
+    # Edge kurulumu için yorum satırını kaldırın
+    # - name: Set up Edge
+    #   uses: browser-actions/setup-edge@latest
 
     - name: Set up Xvfb
       run: |
@@ -107,6 +117,25 @@ jobs:
         name: Test Results (${{ matrix.environment }})
         path: target/surefire-reports/*.xml
         reporter: java-junit
+
+    # E-posta ile test sonuçlarını göndermek için yorum satırını kaldırın
+    # - name: Send Email
+    #   if: always()
+    #   uses: dawidd6/action-send-mail@v3
+    #   with:
+    #     server_address: smtp.gmail.com
+    #     server_port: 465
+    #     username: ${{ secrets.EMAIL_USERNAME }}
+    #     password: ${{ secrets.EMAIL_PASSWORD }}
+    #     subject: Test Results - ${{ github.repository }}
+    #     body: |
+    #       Test results for ${{ github.repository }}
+    #       Environment: ${{ matrix.environment }}
+    #       Status: ${{ job.status }}
+    #       See detailed results in the GitHub Actions tab.
+    #     to: your-email@example.com
+    #     from: GitHub Actions
+    #     attachments: target/surefire-reports/*.xml,target/allure-results/
 
   notify:
     needs: test

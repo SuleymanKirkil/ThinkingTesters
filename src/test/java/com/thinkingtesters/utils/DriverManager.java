@@ -1,4 +1,4 @@
-package com.thinkingtesters.driver;
+package com.thinkingtesters.utils;
 
 import com.thinkingtesters.config.Configuration;
 import io.github.bonigarcia.wdm.WebDriverManager;

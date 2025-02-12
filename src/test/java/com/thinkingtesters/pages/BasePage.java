@@ -1,6 +1,6 @@
 package com.thinkingtesters.pages;
 
-import com.thinkingtesters.driver.DriverManager;
+import com.thinkingtesters.utils.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
