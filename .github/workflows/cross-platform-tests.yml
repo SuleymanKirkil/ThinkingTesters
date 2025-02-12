@@ -61,10 +61,7 @@ jobs:
       fail-fast: false
     
     # Browser set'e göre matrix filtreleme
-    if: |
-      inputs.browser_set == 'all' ||
-      (inputs.browser_set == matrix.browser) ||
-      (inputs.browser_set == 'safari' && matrix.browser == 'safari' && matrix.os == 'macos-latest')
+    if: inputs.browser_set == 'all' || inputs.browser_set == matrix.browser || (inputs.browser_set == 'safari' && matrix.browser == 'safari' && matrix.os == 'macos-latest')
     runs-on: ${{ matrix.os }}
 
     steps:
