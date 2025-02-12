@@ -10,8 +10,9 @@ import org.junit.runner.RunWith;
     glue = {"com.thinkingtesters.steps", "com.thinkingtesters.hooks"},
     plugin = {
         "pretty",
-        "html:target/cucumber-reports/cucumber-pretty",
-        "json:target/cucumber-reports/CucumberTestReport.json",
+        "json:target/cucumber-reports/cucumber.json",
+        "html:target/cucumber-reports/cucumber-html",
+        "junit:target/cucumber-reports/cucumber.xml",
         "rerun:target/cucumber-reports/rerun.txt"
     },
     monochrome = true,

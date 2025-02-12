@@ -75,8 +75,14 @@ jobs:
     - name: Generate Cucumber Reports
       if: always()
       run: |
+        echo "Checking if cucumber.json exists"
+        ls -l target/cucumber-reports/
+        echo "Generating Cucumber Reports"
         mvn verify -DskipTests \
-        -Dcucumber.plugin="json:target/cucumber-reports/cucumber.json,html:target/cucumber-reports/cucumber-pretty"
+        -Dcucumber.report.formats=json \
+        -Dcucumber.report.outputDirectory=target/cucumber-reports \
+        -Dcucumber.json.output.directory=target/cucumber-reports \
+        -Dcucumber.json.output.file=target/cucumber-reports/cucumber.json
 
     - name: List Generated Files
       if: always()
