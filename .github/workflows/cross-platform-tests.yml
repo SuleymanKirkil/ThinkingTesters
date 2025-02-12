@@ -30,53 +30,49 @@ permissions:
 
 jobs:
   test:
-    name: ${{ matrix.os }} - ${{ matrix.browser }}
+    name: ${{ matrix.config.os }} - ${{ matrix.config.browser }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        browser: [chrome, firefox]
-        include:
-          # Edge tests (Windows ve macOS)
-          - os: windows-latest
-            browser: edge
-          - os: macos-latest
-            browser: edge
-          # Safari tests (sadece macOS)
-          - os: macos-latest
-            browser: safari
-        exclude:
-          # Edge ve Safari testlerini sadece seçildiklerinde çalıştır
-          - os: windows-latest
-            browser: edge
-            condition: ${{ inputs.browser_set != 'edge' && inputs.browser_set != 'all' }}
-          - os: macos-latest
-            browser: edge
-            condition: ${{ inputs.browser_set != 'edge' && inputs.browser_set != 'all' }}
-          - os: macos-latest
-            browser: safari
-            condition: ${{ inputs.browser_set != 'safari' && inputs.browser_set != 'all' }}
-          # Chrome testlerini sadece seçildiğinde çalıştır
+        config:
+          # Chrome Tests
           - os: ubuntu-latest
             browser: chrome
-            condition: ${{ inputs.browser_set != 'chrome' && inputs.browser_set != 'all' }}
+            run_for: [chrome, all]
           - os: windows-latest
             browser: chrome
-            condition: ${{ inputs.browser_set != 'chrome' && inputs.browser_set != 'all' }}
+            run_for: [chrome, all]
           - os: macos-latest
             browser: chrome
-            condition: ${{ inputs.browser_set != 'chrome' && inputs.browser_set != 'all' }}
-          # Firefox testlerini sadece seçildiğinde çalıştır
+            run_for: [chrome, all]
+          
+          # Firefox Tests
           - os: ubuntu-latest
             browser: firefox
-            condition: ${{ inputs.browser_set != 'firefox' && inputs.browser_set != 'all' }}
+            run_for: [firefox, all]
           - os: windows-latest
             browser: firefox
-            condition: ${{ inputs.browser_set != 'firefox' && inputs.browser_set != 'all' }}
+            run_for: [firefox, all]
           - os: macos-latest
             browser: firefox
-            condition: ${{ inputs.browser_set != 'firefox' && inputs.browser_set != 'all' }}
+            run_for: [firefox, all]
+          
+          # Edge Tests
+          - os: windows-latest
+            browser: edge
+            run_for: [edge, all]
+          - os: macos-latest
+            browser: edge
+            run_for: [edge, all]
+          
+          # Safari Tests
+          - os: macos-latest
+            browser: safari
+            run_for: [safari, all]
       fail-fast: false
-    runs-on: ${{ matrix.os }}
+    
+    # Browser set kontrolü
+    if: contains(matrix.config.run_for, inputs.browser_set)
+    runs-on: ${{ matrix.config.os }}
 
     steps:
     - uses: actions/checkout@v4
@@ -89,25 +85,25 @@ jobs:
         cache: maven
 
     - name: Set up Chrome
-      if: matrix.browser == 'chrome'
+      if: matrix.config.browser == 'chrome'
       uses: browser-actions/setup-chrome@latest
 
     - name: Set up Firefox
-      if: matrix.browser == 'firefox'
+      if: matrix.config.browser == 'firefox'
       uses: browser-actions/setup-firefox@latest
 
     - name: Set up Edge
-      if: matrix.browser == 'edge'
+      if: matrix.config.browser == 'edge'
       uses: browser-actions/setup-edge@latest
 
     - name: Set up Safari (macOS only)
-      if: matrix.browser == 'safari' && matrix.os == 'macos-latest'
+      if: matrix.config.browser == 'safari' && matrix.config.os == 'macos-latest'
       run: |
         sudo safaridriver --enable
         defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically 1
 
     - name: Set up Xvfb (Linux only)
-      if: matrix.os == 'ubuntu-latest'
+      if: matrix.config.os == 'ubuntu-latest'
       run: |
         sudo apt-get install -y xvfb
         Xvfb :99 &
@@ -125,13 +121,13 @@ jobs:
         CI: true
         TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
         TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
-        DISPLAY: ${{ matrix.os == 'ubuntu-latest' && ':99' || '' }}
+        DISPLAY: ${{ matrix.config.os == 'ubuntu-latest' && ':99' || '' }}
       run: |
         mvn clean test \
         -Dtest.environment=${{ inputs.test_environment }} \
         -DCI=true \
         -Dwebdriver.verbose=true \
-        -Dbrowser=${{ matrix.browser }} \
+        -Dbrowser=${{ matrix.config.browser }} \
         -Dheadless=true \
         -Dsurefire.useFile=true \
         -Dmaven.test.failure.ignore=true \
@@ -154,7 +150,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: test-results-${{ matrix.os }}-${{ matrix.browser }}
+        name: test-results-${{ matrix.config.os }}-${{ matrix.config.browser }}
         path: |
           target/cucumber-reports/
           target/surefire-reports/
@@ -165,7 +161,7 @@ jobs:
       uses: dorny/test-reporter@v1
       if: always()
       with:
-        name: Test Results (${{ matrix.os }} - ${{ matrix.browser }})
+        name: Test Results (${{ matrix.config.os }} - ${{ matrix.config.browser }})
         path: "target/surefire-reports/TEST-*.xml"
         reporter: java-junit
         fail-on-error: false
