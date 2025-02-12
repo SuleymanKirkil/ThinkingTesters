@@ -72,8 +72,13 @@ jobs:
           -Dtest.environment=${{ inputs.test_environment }} \
           -Dbrowser=chrome \
           -Dheadless=true
-      - name: Generate Cucumber Reports
-        if: always()
+      - name: Generate Cucumber Reports (Windows)
+        if: matrix.os == 'windows-latest' && always()
+        shell: cmd
+        run: |
+          mvn verify -DskipTests "-Dcucumber.report.formats=json,html" "-Dcucumber.report.outputDirectory=target/cucumber-reports" "-Dcucumber.json.output.directory=target/cucumber-reports" "-Dcucumber.json.output.file=target/cucumber-reports/cucumber.json"
+      - name: Generate Cucumber Reports (Unix)
+        if: matrix.os != 'windows-latest' && always()
         run: |
           mvn verify -DskipTests \
           -Dcucumber.report.formats=json,html \
@@ -142,8 +147,13 @@ jobs:
           -Dtest.environment=${{ inputs.test_environment }} \
           -Dbrowser=firefox \
           -Dheadless=true
-      - name: Generate Cucumber Reports
-        if: always()
+      - name: Generate Cucumber Reports (Windows)
+        if: matrix.os == 'windows-latest' && always()
+        shell: cmd
+        run: |
+          mvn verify -DskipTests "-Dcucumber.report.formats=json,html" "-Dcucumber.report.outputDirectory=target/cucumber-reports" "-Dcucumber.json.output.directory=target/cucumber-reports" "-Dcucumber.json.output.file=target/cucumber-reports/cucumber.json"
+      - name: Generate Cucumber Reports (Unix)
+        if: matrix.os != 'windows-latest' && always()
         run: |
           mvn verify -DskipTests \
           -Dcucumber.report.formats=json,html \
@@ -205,8 +215,13 @@ jobs:
           -Dtest.environment=${{ inputs.test_environment }} \
           -Dbrowser=edge \
           -Dheadless=true
-      - name: Generate Cucumber Reports
-        if: always()
+      - name: Generate Cucumber Reports (Windows)
+        if: matrix.os == 'windows-latest' && always()
+        shell: cmd
+        run: |
+          mvn verify -DskipTests "-Dcucumber.report.formats=json,html" "-Dcucumber.report.outputDirectory=target/cucumber-reports" "-Dcucumber.json.output.directory=target/cucumber-reports" "-Dcucumber.json.output.file=target/cucumber-reports/cucumber.json"
+      - name: Generate Cucumber Reports (Unix)
+        if: matrix.os != 'windows-latest' && always()
         run: |
           mvn verify -DskipTests \
           -Dcucumber.report.formats=json,html \
