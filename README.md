@@ -127,6 +127,58 @@ Scenario: Temporary known issue
 - Reusable API request methods
 - Response validation utilities
 
+## Test Çalıştırma Seçenekleri
+
+### 1. Otomatik Testler (Push Triggered)
+
+Her push işleminde otomatik olarak çalışan temel test seti:
+
+- Tetikleyici: Her push işlemi
+- Browser: Chrome
+- Platform: Ubuntu
+- Ortamlar: QA ve Staging
+- Raporlama: Cucumber Reports ve JUnit Reports
+
+### 2. Cross-Platform Testler (Manuel)
+
+Farklı işletim sistemleri ve tarayıcılarda paralel test çalıştırma:
+
+- Tetikleyici: Manuel (GitHub Actions üzerinden)
+- Browserlar:
+  - Chrome (Tüm platformlar)
+  - Firefox (Tüm platformlar)
+  - Edge (Windows ve macOS)
+  - Safari (Sadece macOS)
+- Platformlar:
+  - Ubuntu
+  - Windows
+  - macOS
+- Ortam Seçenekleri:
+  - QA
+  - Staging
+- Raporlama:
+  - Her platform-browser kombinasyonu için ayrı Cucumber Reports
+  - JUnit test sonuçları
+  - Hata durumunda ekran görüntüleri
+
+## Cross-Platform Testleri Çalıştırma
+
+1. GitHub'da projenin Actions sekmesine gidin
+2. Sol menüden "Cross Platform Tests" workflow'unu seçin
+3. "Run workflow" butonuna tıklayın
+4. Parametreleri seçin:
+   - Test Environment: qa veya staging
+   - Browser Set: all, chrome, firefox, edge, veya safari
+5. "Run workflow" butonuna tekrar tıklayarak testleri başlatın
+
+## Test Raporlarına Erişim
+
+1. GitHub Actions'da ilgili workflow çalışmasına tıklayın
+2. Artifacts bölümünden test raporlarını indirebilirsiniz:
+   - Cucumber HTML raporları
+   - JUnit test sonuçları
+   - Hata durumunda ekran görüntüleri
+
 ## Best Practices
 
 ### Writing Tests
